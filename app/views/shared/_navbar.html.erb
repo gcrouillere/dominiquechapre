@@ -24,7 +24,7 @@
           <span><i class="fa fa-female"></i> Infos</span>
         <% end %>
         <%= link_to new_lesson_path do %>
-          <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
+          <span><i class="far fa-calendar-alt"></i> Réserver un stage</span>
         <% end %>
         <% if session[:order].present? %>
           <% if Order.where(id: session[:order]).present? %>
@@ -48,7 +48,7 @@
             <span><i class="fa fa-female"></i> Infos</span>
         <% end %>
         <%= link_to new_lesson_path do %>
-          <span><i class="fa fa-calendar-o"></i> Réserver un stage</span>
+          <span><i class="far fa-calendar-alt"></i> Réserver un stage</span>
         <% end %>
         <% if session[:order].present? %>
           <% if Order.where(id: session[:order]).present? %>

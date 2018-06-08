@@ -86,8 +86,8 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
     },
     "offers": {
       "@type": "AggregateOffer",
-      "lowPrice": "<%= humanized_money(@ceramiques.minimum(:price_cents) / 100) %>",
-      "highPrice": "<%= humanized_money(@ceramiques.maximum(:price_cents) / 100) %>",
+      "lowPrice": "<%= humanized_money((@ceramiques.minimum(:price_cents) || 0) / 100) %>",
+      "highPrice": "<%= humanized_money((@ceramiques.maximum(:price_cents) || 0) / 100) %>",
       "priceCurrency": "EUR"
     }
   }
