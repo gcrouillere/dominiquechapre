@@ -25,22 +25,18 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
       <%= render 'shared/general_info_bubble_darktheme' %>
     </div>
     <div class="h1-index mobile hidden-md hidden-lg">
-      <h1>Céramiques: les pièces uniques en vente sur le site</h1>
-      <hr>
+      <h1>Chapeaux: les pièces uniques en vente sur le site</h1>
     </div>
   <% elsif params[:offer].present? %>
     <div class="h1-index hidden-xs hidden-sm">
       <h1> <%= @front_offer.title %> : les produits</h1>
-      <hr>
     </div>
   <% else %>
     <div class="h1-index hidden-xs hidden-sm">
-      <h1>Céramiques: les pièces uniques en vente sur le site</h1>
-      <hr>
+      <h1>Chapeaux: les pièces uniques en vente sur le site</h1>
     </div>
     <div class="h1-index mobile hidden-md hidden-lg">
       <h1>Les créations uniques</h1>
-      <hr>
     </div>
   <% end %>
 

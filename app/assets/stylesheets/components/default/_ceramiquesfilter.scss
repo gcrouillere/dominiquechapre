@@ -20,15 +20,17 @@
 
   }
   h2 {
-    font-weight: $font-weight-h4-search;
-    font-size: $font-size-h4;
+    font-size: 31px;
+    font-weight: 400;
+    text-align: center;
+    border-bottom: 1px solid $primary;
     margin-bottom: 20px;
-    margin-top: 5px;
-    color: $filter-title;
-    background: $primary;
-    border-radius: $project-border-radius;
+    margin-top: -5px;
+    color: #444;
+    /* background: #FF9F1C; */
+    border-radius: 1px;
     padding: 10px;
-    box-shadow: 1px 1px 1px grey;
+    /* box-shadow: 1px 1px 1px grey; */
   }
 
   h3 {

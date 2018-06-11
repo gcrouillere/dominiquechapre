@@ -31,7 +31,12 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid black;
+  border-image: linear-gradient(to right, rgba(255,159,28,0.4), rgba(248,80,50,0.4)) 1;
+  border-width: 1px;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-top: none;
   .navbar-brand {
     display: flex;
     text-align: center;

@@ -1,6 +1,11 @@
 #footer {
   background-color: #171717;
-  border-top: 1px solid black;
+  border-image: linear-gradient(to right, rgba(255,159,28,0.4), rgba(248,80,50,0.4)) 1;
+  border-width: 1px;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-bottom: none;
   margin-top: 20px;
   display: flex;
   .contact-default {
