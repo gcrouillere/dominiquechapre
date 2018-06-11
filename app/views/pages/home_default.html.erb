@@ -21,8 +21,8 @@
   <div class="hidden-xs">
     <div class="banner">
       <div class="banner-content">
-        <h1><%= ENV['MODEL'].capitalize%></h1>
-        <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
+        <h1>Les Chapeaux Uniques</h1>
+        <p>Créations par Dominique Chapre</p>
         <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg btn-home" %>
       </div>
         <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil")%>
@@ -35,8 +35,8 @@
   <div class="hidden-sm hidden-md hidden-lg">
     <div class="banner-xs">
       <div class="banner-content-xs">
-        <h1><%= ENV['MODEL'].capitalize%></h1>
-        <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>
+        <h1>Chapeaux</h1>
+        <p>Dominique Chapre</p>
         <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-home" %>
       </div>
     </div>
