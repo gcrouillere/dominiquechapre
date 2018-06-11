@@ -124,7 +124,7 @@
   }
 }
 
-.body-lighttheme {
+.body-lighttheme, .body-stage-lightheme {
   .navbar-item {
     .nav-bar-list {
      a {
@@ -134,6 +134,11 @@
       border-bottom: 1px solid black !important;
       }
       i {
+        color: black !important;
+      }
+    }
+    .list-mobile {
+      a {
         color: black !important;
       }
     }
