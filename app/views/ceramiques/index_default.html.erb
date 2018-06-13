@@ -121,7 +121,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
                   <h2 class="hidden-xs "> <%= ceramique.name.capitalize%> </h2>
                   <h2 class="card-mobile-h2 hidden-sm hidden-md hidden-lg"> <%= ceramique.name.capitalize%> </h2>
                   <% ratio = ceramique.photos[0].width.to_f / ceramique.photos[0].height  %>
-                  <% ratio < 1 ? ratio = "small" : ratio = "large" %>
+                  <% ratio < 1 ? ratio = "small" : ratio = "small" %>
                   <p class="<%= ratio %> hidden-xs"> <%= ceramique.description%> </p>
                 </div>
               <% end %>
