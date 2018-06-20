@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_05_29_071624) do
+ActiveRecord::Schema.define(version: 2018_06_19_123040) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -79,6 +79,10 @@ ActiveRecord::Schema.define(version: 2018_05_29_071624) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "lesson_id"
+    t.boolean "available"
+    t.integer "price_cents", default: 0, null: false
+    t.integer "capacity"
+    t.string "name", null: false
     t.index ["lesson_id"], name: "index_calendarupdates_on_lesson_id"
   end
 
@@ -123,6 +127,8 @@ ActiveRecord::Schema.define(version: 2018_05_29_071624) do
     t.integer "student", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "calendarupdate_id"
+    t.index ["calendarupdate_id"], name: "index_lessons_on_calendarupdate_id"
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
@@ -203,6 +209,7 @@ ActiveRecord::Schema.define(version: 2018_05_29_071624) do
   add_foreign_key "calendarupdates", "lessons"
   add_foreign_key "ceramiques", "categories"
   add_foreign_key "ceramiques", "offers"
+  add_foreign_key "lessons", "calendarupdates"
   add_foreign_key "lessons", "users"
   add_foreign_key "orders", "lessons"
   add_foreign_key "orders", "users"

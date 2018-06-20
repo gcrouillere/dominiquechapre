@@ -41,7 +41,7 @@ fr:
       category:
         one: "Catégories"
         other: "Catégories"
-      calendarupdate: "Bloquage de période"
+      calendarupdate: "Ouverture de stage"
       lesson:
         one: "Réservation"
         other: "Réservations"
@@ -71,8 +71,8 @@ fr:
         confirmed: "Confirmé ?"
         student: "Nombre de participants"
       calendarupdate:
-        period_start: "Début de la période"
-        period_end: "Fin de la période"
+        period_start: "Début du stage"
+        period_end: "Fin du stage"
         capacity: "Places disponibles"
         available: "Disponible ?"
         price_cents: "Prix en cents d'€"

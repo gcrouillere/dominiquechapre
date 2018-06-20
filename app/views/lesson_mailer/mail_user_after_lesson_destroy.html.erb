@@ -4,7 +4,6 @@
   <p>Si vous aviez déjà payé les arrhes, ils vous seront remboursés.</p>
 <% else %>
   <p>Nous sommes désolés, mais nous ne pouvons accepter votre demande de stage, pour des raisons de capacité.</p>
-  <p> Vous pourriez commencer votre stage à cette (ces) date(s) : <%="#{@closest_start}"%>. Veuillez effectuer une nouvelle demande sur le <%= link_to 'site', new_lesson_url %>.</p>
 <% end %>
 <p>Cordialement</p>
 <p><%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}" %></p>

@@ -7,8 +7,6 @@ Bonjour <%= @lesson.user.first_name %> <%= @lesson.user.last_name %>,
 <% else %>
 <%= "Nous sommes désolés, mais nous ne pouvons accepter votre demande de stage, pour des raisons de capacité."%>
 
-<%= "Vous pourriez commencer votre stage à cette (ces) date(s) : #{@closest_start}. Veuillez effectuer une nouvelle demande sur le site : https://#{ENV['APPNAME']}.herokuapp.com/lessons/new"%>
-
 <% end %>
 
 Cordialement
