@@ -103,9 +103,9 @@ Rails.application.configure do
     :enable_starttls_auto => true
   }
 
-  # Dynopoker.configure do |config|
-  #   config.address = 'https://carolekaltenbacher.herokuapp.com'
-  #   config.poke_frequency = 600 # default is 1800s (30min)
-  # end
+  Dynopoker.configure do |config|
+    config.address = 'https://dominiquechapre.herokuapp.com'
+    config.poke_frequency = 600 # default is 1800s (30min)
+  end
 
 end
