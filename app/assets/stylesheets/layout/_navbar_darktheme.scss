@@ -54,21 +54,17 @@
   .navbar-item .nav-bar-list a {
     font-size: 15px;
   }
-  .lightcart {
-    width: 23px;
-    top: -1px;
-    position: relative;
-  }
+}
+
+.lightcart {
+  width: 23px;
+  top: -1px;
+  position: relative;
 }
 
 .navbar-laptop-darktheme, .navbar-mobile-darktheme {
   .navbar-item-darktheme {
     cursor: pointer;
-    .lightcart {
-      width: 23px;
-      top: -1px;
-      position: relative;
-    }
     .nav-bar-list {
       display: flex;
       list-style: none;

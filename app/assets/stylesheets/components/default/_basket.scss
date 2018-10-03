@@ -50,6 +50,9 @@
   .cost-details {
     width: 400px;
     margin-right: 20px;
+    .total_amount {
+      text-align: center;
+    }
   }
   .hidden-sm {
     margin: 11px 0px 20px 0px;
@@ -97,6 +100,7 @@
 
 .total.mobile {
   margin-bottom: 30px;
+  justify-content: center;
 }
 
 .mobile-back {
