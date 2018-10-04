@@ -63,6 +63,18 @@
 }
 
 .navbar-laptop-darktheme, .navbar-mobile-darktheme {
+  border-image: linear-gradient(to right, rgba(255,159,28,0.4), rgba(248,80,50,0.4)) 1;
+  border-width: 1px;
+  border-style: solid;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+
+  .nav-name {
+    color: white;
+    font-family: Raleway;
+    font-size: 26px;
+  }
   .navbar-item-darktheme {
     cursor: pointer;
     .nav-bar-list {
@@ -119,6 +131,9 @@
     letter-spacing: 2px;
     color: white;
     text-shadow: 1px 1px 0px $primary;
+    img {
+      width: 42px;
+    }
   }
   .infoimg {
     width: 20px;

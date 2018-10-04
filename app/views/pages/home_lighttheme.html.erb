@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-  Vendez vos produits en ligne ! Site de e-commerce configurable. Créez votre compte et visualisez votre futur site de vente en ligne de vos produits.
+  Retrouvez dans la boutique les chapeaux uniques créés par Dominique Chapre. Achetez ses créations en ligne.
 <% end %>
 <% content_for(:title_tag) do %>
-  Vente de <%=ENV['MODEL']%> - <%=ENV['FIRSTNAME']%> <%=ENV['LASTNAME'] %>
+  Les créations textiles uniques de Dominique Chapre. Sa boutique en ligne regroupe ses chapeaux et créations artisanales.
 <% end %>
 
 <%= render 'shared/home_pics' %>
@@ -66,7 +66,7 @@
     "@type": "ArtGallery",
     "image": ["<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"],
     "@id": "<%=request.original_url%>",
-    "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
+    "name": "Les <%="chapeaux uniques créés par Dominique Chapre"%>",
     "address": {
       "@type": "PostalAddress",
       "streetAddress": "12 rue de la paix",

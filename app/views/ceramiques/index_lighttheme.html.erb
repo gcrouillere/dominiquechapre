@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-Site de e-commerce configurable. Créez votre compte et visualisez votre futur site de vente en ligne de vos produits.
+Chaque pièce est unique. Découvrez dans la boutique tous les modèles et leurs matières originales.
 <% end %>
 <% content_for(:title_tag) do %>
-  Liste des produits à vendre
+  Les chapeaux uniques créés par Dominique Chapre. Achetez ses créations en ligne.
 <% end %>
 
 <% if @front_offer %>
@@ -78,7 +78,7 @@ Site de e-commerce configurable. Créez votre compte et visualisez votre futur s
   {
     "@context": "http://schema.org/",
     "@type": "Product",
-    "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
+    "name": "Les <%="chapeaux uniques créés par Dominique Chapre"%>",
     "image": <%= raw @ceramiques.map {|ceramique| cl_image_path ceramique.photos[0].path}.to_json %>,
     "brand": {
       "@type": "Thing",

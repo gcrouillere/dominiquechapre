@@ -56,7 +56,8 @@
 
               data-description="<%=ENV['FIRSTNAME'].capitalize%> <%=ENV['LASTNAME'].capitalize%>"
               data-amount="<%= @order.take_away ? @order.amount_cents : @order.amount_cents + @order.port_cents %>"
-              data-currency="<%= @order.amount.currency %>">
+              data-currency="<%= @order.amount.currency %>"
+              data-locale="auto">
             </script>
             <div class="secure">
               <% @payment_theme == "darktheme" ? logo = "stripe.svg" : logo = "stripe-black.svg" %>

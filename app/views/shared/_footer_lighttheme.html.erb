@@ -4,8 +4,7 @@
     <div class="contact">
       <div class="connect">
         <h3>Gardons le contact</h3>
-        <h4>Facebook</h4>
-        <h4>Instagram</h4>
+        <h4><%= link_to "Facebook", "https://www.facebook.com/ChapeauxDominiqueChapre/", target: "blank" %></h4>
         <div class="hidden-xs hidden-sm hidden-md">
           <% if user_signed_in? %>
             <% if current_user.admin %>

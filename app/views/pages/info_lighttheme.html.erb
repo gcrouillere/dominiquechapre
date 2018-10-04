@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cette page des informations vous concernant : biographie, techniques utilisées.
+  Découvrez les créations textiles dans la boutique.
 <% end %>
 <% content_for(:title_tag) do %>
-  Page bio de votre site de e-commerce
+  Dominique Chapre modiste et créatrice textile.
 <% end %>
 
 <%= render 'shared/info_pics' %>
@@ -61,7 +61,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
           {
             lat: <%= ENV['LAT'].to_f %>,
             lng: <%= ENV['LNG'].to_f %>,
-            infowindow: "<%= "Les #{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>"
+            infowindow: "<%= "Les chapeaux uniques créés par Dominique Chapre"%>"
           }
         ]);
         handler1.bounds.extendWith(markers1);
@@ -87,7 +87,7 @@ Vendez vos produits en ligne ! Site de e-commerce configurable. Affichez sur cet
     {
       "@context": "http://schema.org",
       "@type": "ArtGallery",
-      "name": "Les <%="#{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>",
+      "name": "Les <%="chapeaux uniques créés par Dominique Chapre"%>",
       "description": "Online craft store",
       "openingHours": "Mo-Fr 09:00-18:00",
       "telephone": "<%= ENV['TELEPHONE']%>",

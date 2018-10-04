@@ -73,8 +73,15 @@
       margin: 0 10px;
     }
   }
-  h3, h5 {
+  h5 {
     text-align: right;
+    font-weight: 300;
+  }
+  h3 {
+    text-align: right;
+    @media all and (max-width: 576px) {
+      text-align: center;
+    }
     font-weight: 300;
   }
   h3 {

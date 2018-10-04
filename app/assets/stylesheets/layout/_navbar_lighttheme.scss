@@ -89,6 +89,11 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .nav-name {
+    color: black;
+    font-family: Raleway;
+    font-size: 26px;
+  }
   /* Navbar logo */
   .navbar-brand-mobile {
     display: flex;

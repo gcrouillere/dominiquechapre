@@ -73,8 +73,11 @@
 <div class="navbar-mobile-darktheme hidden-md hidden-lg">
  <!-- Logo -->
   <%= link_to root_path, class: "navbar-brand-mobile" do %>
-    <%= "#{ENV['FIRSTNAME'][0].capitalize} #{ENV['LASTNAME'][0].capitalize}" %>
+    <%= render 'shared/logo_pic' %>
+    <%= @logositepictag %>
   <% end %>
+
+  <span class="nav-name hidden-xs">Dominique Chapre</span>
 
   <div class="navbar-item-darktheme">
     <div class="list-mobile">

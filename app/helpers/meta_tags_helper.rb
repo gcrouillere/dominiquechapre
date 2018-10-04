@@ -1,10 +1,10 @@
 module MetaTagsHelper
   def meta_title
-    content_for?(:title_tag) ? content_for(:title_tag) : "Les #{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"
+    content_for?(:title_tag) ? content_for(:title_tag) : "Les chapeaux uniques créés par Dominique Chapre"
   end
 
   def meta_product_name
-    content_for?(:meta_product_name) ? content_for(:meta_product_name) : "Les #{ENV['MODEL']} de #{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize} - vente de produits de l'artisanat"
+    content_for?(:meta_product_name) ? content_for(:meta_product_name) : "Les chapeaux uniques créés par Dominique Chapre - vente de produits de l'artisanat"
   end
 
   def meta_description
