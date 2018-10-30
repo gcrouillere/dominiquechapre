@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_19_123040) do
+ActiveRecord::Schema.define(version: 2018_08_08_121232) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,10 +31,11 @@ ActiveRecord::Schema.define(version: 2018_06_19_123040) do
 
   create_table "articles", id: :serial, force: :cascade do |t|
     t.string "name", null: false
-    t.text "content", null: false
+    t.text "content"
     t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title"
     t.index ["user_id"], name: "index_articles_on_user_id"
   end
 
@@ -59,6 +60,9 @@ ActiveRecord::Schema.define(version: 2018_06_19_123040) do
     t.integer "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "ceramique_name"
+    t.integer "ceramique_qty"
+    t.integer "basketline_price_cents", default: 0, null: false
     t.index ["ceramique_id"], name: "index_basketlines_on_ceramique_id"
     t.index ["order_id"], name: "index_basketlines_on_order_id"
   end
@@ -87,14 +91,14 @@ ActiveRecord::Schema.define(version: 2018_06_19_123040) do
   end
 
   create_table "categories", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "ceramiques", id: :serial, force: :cascade do |t|
-    t.string "name", null: false
-    t.text "description", null: false
+    t.string "name"
+    t.text "description"
     t.integer "stock", null: false
     t.integer "category_id"
     t.datetime "created_at", null: false
@@ -103,6 +107,7 @@ ActiveRecord::Schema.define(version: 2018_06_19_123040) do
     t.string "slug"
     t.integer "weight"
     t.integer "offer_id"
+    t.integer "position"
     t.index ["category_id"], name: "index_ceramiques_on_category_id"
     t.index ["offer_id"], name: "index_ceramiques_on_offer_id"
   end
@@ -132,6 +137,31 @@ ActiveRecord::Schema.define(version: 2018_06_19_123040) do
     t.index ["user_id"], name: "index_lessons_on_user_id"
   end
 
+  create_table "mobility_string_translations", force: :cascade do |t|
+    t.string "locale", null: false
+    t.string "key", null: false
+    t.string "value"
+    t.integer "translatable_id", null: false
+    t.string "translatable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_string_translations_on_translatable_attribute"
+    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_string_translations_on_keys", unique: true
+    t.index ["translatable_type", "key", "value", "locale"], name: "index_mobility_string_translations_on_query_keys"
+  end
+
+  create_table "mobility_text_translations", force: :cascade do |t|
+    t.string "locale", null: false
+    t.string "key", null: false
+    t.text "value"
+    t.integer "translatable_id", null: false
+    t.string "translatable_type", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["translatable_id", "translatable_type", "key"], name: "index_mobility_text_translations_on_translatable_attribute"
+    t.index ["translatable_id", "translatable_type", "locale", "key"], name: "index_mobility_text_translations_on_keys", unique: true
+  end
+
   create_table "offers", id: :serial, force: :cascade do |t|
     t.string "title", null: false
     t.string "description", null: false
@@ -153,8 +183,18 @@ ActiveRecord::Schema.define(version: 2018_06_19_123040) do
     t.integer "port_cents", default: 0, null: false
     t.boolean "take_away"
     t.integer "weight"
+    t.bigint "promo_id"
+    t.string "method"
     t.index ["lesson_id"], name: "index_orders_on_lesson_id"
+    t.index ["promo_id"], name: "index_orders_on_promo_id"
     t.index ["user_id"], name: "index_orders_on_user_id"
+  end
+
+  create_table "promos", force: :cascade do |t|
+    t.string "code"
+    t.float "percentage"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "shipping_categories", force: :cascade do |t|
@@ -212,5 +252,6 @@ ActiveRecord::Schema.define(version: 2018_06_19_123040) do
   add_foreign_key "lessons", "calendarupdates"
   add_foreign_key "lessons", "users"
   add_foreign_key "orders", "lessons"
+  add_foreign_key "orders", "promos"
   add_foreign_key "orders", "users"
 end

@@ -17,7 +17,7 @@ class LessonsController < ApplicationController
 
   def create
     if current_user.lessons.where(confirmed: false).present?
-      flash[:alert] = "Vous avez déjà une demande de stage en cours"
+      flash[:alert] = t(:existing_lesson)
       redirect_to new_lesson_path and return
     end
 
@@ -30,11 +30,6 @@ class LessonsController < ApplicationController
       confirmed: false,
       calendarupdate: calendar_update
       )
-    # if @lesson.start < Time.now
-    #   @lesson.destroy
-    #   flash[:alert] = "Veuillez sélectionner une date dans le futur"
-    #   redirect_to new_lesson_path and return
-    # end
 
     if calendar_update.capacity < @lesson.student
       @lesson.destroy

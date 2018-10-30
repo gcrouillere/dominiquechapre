@@ -7,6 +7,9 @@
   border-right: none;
   border-bottom: none;
   margin-top: 20px;
+  @media all and (max-width: 768px) {
+    margin-top: 0px !important;
+  }
   display: flex;
   .contact-default {
     width: 25%;

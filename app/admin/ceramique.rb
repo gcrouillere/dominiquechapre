@@ -1,10 +1,11 @@
 ActiveAdmin.register Ceramique, as: 'Produits' do
-  permit_params :name, :description, :stock, :weight, :category_id, :price_cents, photos: []
+  permit_params :name, :description, :stock, :weight, :position, :price_cents, :category_id, photos: []
   menu priority: 1
   config.filters = false
 
   index do
     column :id
+    column :position
     column :name
     column :description
     column :stock
@@ -20,17 +21,18 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
   end
 
   form do |f|
-  f.inputs "" do
-    f.input :name
-    f.input :description
-    f.input :stock
-    f.input :weight, :hint => "Poids en grammes"
-    f.input :category
-    f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
-    f.input :photos, :as => :formtastic_attachinary, :hint => "Sélectionnez les photos du produit. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
+    f.inputs "" do
+      f.input :name
+      f.input :description
+      f.input :position
+      f.input :stock
+      f.input :weight, :hint => "Poids en grammes"
+      f.input :category
+      f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
+      f.input :photos, :as => :formtastic_attachinary, :hint => "Sélectionnez les photos du produit. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
+    end
+    f.actions
   end
-  f.actions
- end
 
 show do |ceramique|
   attributes_table do
@@ -51,8 +53,7 @@ show do |ceramique|
  end
 
  csv do
-    column :created_at
-    column :id
+    column :position
     column :name
     column :description
     column :stock
@@ -74,36 +75,51 @@ show do |ceramique|
     end
  end
 
- controller do
+  controller do
 
-  def create
-    super do |format|
-      if resource.valid?
-        flash[:notice] = "Produit mis à jour"
-        redirect_to admin_produits_path and return
-      else
-        flash[:alert] = "Certains champs ont été oubliés ou ne sont pas correctement remplis. Voir ci-dessous."
+    def create
+      super do |format|
+        if resource.valid?
+          product_positions_management
+          flash[:notice] = "Produit mis à jour"
+          redirect_to admin_produits_path and return
+        else
+          flash[:alert] = "Certains champs ont été oubliés ou ne sont pas correctement remplis. Voir ci-dessous."
+        end
       end
     end
-  end
 
-  def destroy
-    flash[:notice] = "#{ENV['MODEL'][0...-1].capitalize} supprimé"
-    super do |format|
-      redirect_to admin_produits_path and return
-    end
-  end
-
-  def update
-    super do |format|
-      if resource.valid?
-        flash[:notice] = "Produit mis à jour"
-        redirect_to admin_produits_path and return
+    def destroy
+      if Order.where(state: ["pending","payment page"]).joins(:basketlines).where("basketlines.ceramique_id = ?", resource.id).present?
+        flash[:alert] = "Ce produit est dans un panier dans le processus d'achat, vous ne pouvez pas le supprimer"
+        redirect_to request.referrer and return
       else
-        flash[:alert] = "Certains champs ont été oubliés ou ne sont pas correctement remplis. Voir ci-dessous."
+        resource.basketlines.update(ceramique_id: nil)
+        flash[:notice] = "#{ENV['MODEL'][0...-1].capitalize} supprimé"
+      end
+      super do |format|
+        redirect_to admin_produits_path and return
       end
     end
-  end
+
+    def update
+      super do |format|
+        if resource.valid?
+          product_positions_management
+          flash[:notice] = "Produit mis à jour"
+          redirect_to admin_produits_path and return
+        else
+          flash[:alert] = "Certains champs ont été oubliés ou ne sont pas correctement remplis. Voir ci-dessous."
+        end
+      end
+    end
+
+    def product_positions_management
+      if params[:ceramique][:position].present?
+        products_to_manage = Ceramique.where("position IS NOT NULL AND position >= ?", params[:ceramique][:position]).where.not(id: resource.id)
+        products_to_manage.each {|product| product.update(position: product.position + 1)}
+      end
+    end
 
   end
 

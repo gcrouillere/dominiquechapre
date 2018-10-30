@@ -1,7 +1,7 @@
 <!-- Right Navigation LAPTOP -->
 <div class="navbar-laptop hidden-xs hidden-sm">
   <!-- Logo -->
-  <%= link_to root_path, class: "navbar-brand", title: "Retour à l'accueil de notre offre de boutique ligne" do %>
+  <%= link_to root_path, class: "navbar-brand", title: t(:navbar_home_link) do %>
     <%= render 'shared/logo_pic' %>
     <%= @logositepictag %>
   <% end %>
@@ -17,14 +17,17 @@
             <span><i class="fa fa-unlock-alt"></i> Administration</span>
           <% end %>
         <% end %>
+        <%= link_to root_path do %>
+          <span><%=t(:home_page)%></span>
+        <% end %>
         <%= link_to ceramiques_path do %>
-          <span><i class="fa fa-bars"></i> Boutique</span>
+          <span><i class="fa fa-bars"></i> <%= t(:shop_link) %></span>
         <% end %>
         <%= link_to info_path do %>
-          <span><i class="fa fa-female"></i> Infos</span>
+          <span><i class="fa fa-female"></i> <%= t(:info_link) %></span>
         <% end %>
         <%= link_to new_lesson_path do %>
-          <span><i class="far fa-calendar-alt"></i> Réserver un stage</span>
+          <span><i class="far fa-calendar-alt"></i> <%= t(:lesson_link) %></span>
         <% end %>
         <% if session[:order].present? %>
           <% if Order.where(id: session[:order]).present? %>
@@ -35,20 +38,41 @@
             <% end %>
           <% end %>
         <% end %>
+
+        <div class="dropdown">
+          <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+              <%= image_tag "#{I18n.locale.upcase}.svg", class: "flag"%>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-langages">
+            <li><%= link_to params.merge(locale: "en", change: true).permit(:locale, :change) do %>
+                  <%= image_tag "EN.svg", class: "flag"%>
+                <% end %>
+            </li>
+            <li><%= link_to params.merge(locale: "fr", change: true).permit(:locale, :change) do %>
+                  <%= image_tag "FR.svg", class: "flag"%>
+                <% end %>
+            </li>
+          </ul>
+        </div>
+
       </div>
     </div>
 
   <% else %>
     <div class="navbar-item">
       <div class="nav-bar-list">
+        <%= link_to root_path do %>
+          <span><%=t(:home_page)%></span>
+        <% end %>
         <%= link_to ceramiques_path do %>
-          <span><i class="fa fa-bars"></i> Boutique</span>
+          <span><i class="fa fa-bars"></i> <%= t(:shop_link) %></span>
         <% end %>
         <%= link_to info_path do %>
-            <span><i class="fa fa-female"></i> Infos</span>
+            <span><i class="fa fa-female"></i> <%= t(:info_link) %></span>
         <% end %>
         <%= link_to new_lesson_path do %>
-          <span><i class="far fa-calendar-alt"></i> Réserver un stage</span>
+          <span><i class="far fa-calendar-alt"></i> <%= t(:lesson_link) %></span>
         <% end %>
         <% if session[:order].present? %>
           <% if Order.where(id: session[:order]).present? %>
@@ -59,6 +83,23 @@
             <% end %>
           <% end %>
         <% end %>
+
+        <div class="dropdown">
+          <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+              <%= image_tag "#{I18n.locale.upcase}.svg", class: "flag"%>
+            <span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu dropdown-menu-langages">
+            <li><%= link_to params.merge(locale: "en", change: true).permit(:locale, :change) do %>
+                  <%= image_tag "EN.svg", class: "flag"%>
+                <% end %>
+            </li>
+            <li><%= link_to params.merge(locale: "fr", change: true).permit(:locale, :change) do %>
+                  <%= image_tag "FR.svg", class: "flag"%>
+                <% end %>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   <% end %>
@@ -75,13 +116,13 @@
   <div class="navbar-item">
     <div class="list-mobile">
       <%= link_to ceramiques_path do %>
-          <span>Shop</span>
+          <span><%= t(:shop_link_mobile) %></span>
         <% end %>
       <%= link_to info_path do %>
-        <li><span>Infos</span></li>
+        <%= image_tag "info.svg", class: "infoimg"%>
       <% end %>
       <%= link_to new_lesson_path do %>
-        <span>Stage</span>
+        <span><%= t(:lesson_link_mobile) %></span>
       <% end %>
 
       <% if session[:order].present? %>
@@ -93,6 +134,23 @@
           <% end %>
         <% end %>
       <% end %>
+
+      <div class="dropdown">
+        <a class="dropdown-toggle" type="button" data-toggle="dropdown">
+            <%= image_tag "#{I18n.locale.upcase}.svg", class: "flag"%>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-langages">
+          <li><%= link_to params.merge(locale: "en", change: true).permit(:locale, :change) do %>
+                <%= image_tag "EN.svg", class: "flag"%>
+              <% end %>
+          </li>
+          <li><%= link_to params.merge(locale: "fr", change: true).permit(:locale, :change) do %>
+                <%= image_tag "FR.svg", class: "flag"%>
+              <% end %>
+          </li>
+        </ul>
+      </div>
     </div>
   </div>
 

@@ -23,16 +23,18 @@
   }
 
   .ceramiquecard-darktheme {
-    margin: 20px 20px 10px 10px;
-    padding: $padding-large;
+    margin: 0px 20px 10px 10px;
     background: $card-background;
     border-radius: $project-border-radius;
     text-decoration: none;
-    min-height: 500px;
     position: relative;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+
+    .ceramiquecardimage {
+      min-height: 450px;
+    }
 
     .ribbon {
       z-index: 1;
@@ -66,20 +68,16 @@
       letter-spacing: 1px;
       transform: rotate(1.05turn);
     }
-
     .prix-index {
-      position: absolute;
-      top: 9px;
-      right: 0px;
+      width: max-content;
     }
     .previous-price {
       font-size: 13px;
       font-weight: 100;
-      position: absolute;
-      top: 30px;
-      right: 10px;
       text-decoration: line-through;
       color: black;
+      margin: 0;
+      text-align: center;
     }
 
     p.small {
@@ -99,21 +97,28 @@
     }
 
     .ceramique-card-text {
-      background: rgba(255, 255, 255, 0.7);
+      min-height: 92px;
+      background: #efefef;
       padding: $padding-small;
       border-radius: $project-border-radius;
       position: relative;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       h2 {
-        margin-top: 10px;
+        margin: 15px;
         font-size: $font-size-h4;
         color: black;
       }
-      h2, h3 {
-        margin-left: 10px;
-        margin-right: 10px;
-        h2:hover, h2:hover {
-          text-decoration: none;
-        }
+      .card-h2 {
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 21px;     /* fallback */
+        max-height: 42px;      /* fallback */
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
       }
     }
   }
@@ -121,7 +126,7 @@
   @media all and (max-width: 800px) {
     .ceramiquecard-darktheme {
       margin: 0px 10px 10px 10px;
-      padding: 7px 0px 0px 0px;
+      padding: 0px;
       min-height: 400px;
       position: relative;
       h3 {
@@ -132,9 +137,17 @@
       }
       .card-mobile-h2 {
         text-align: center;
-        margin: 20px 0;
+        margin: 15px;
         text-shadow: 1px 1px #f1f1f1;
         color: black;
+        display: block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        line-height: 21px;     /* fallback */
+        max-height: 42px;      /* fallback */
+        -webkit-line-clamp: 2; /* number of lines to show */
+        -webkit-box-orient: vertical;
       }
       .allpricesmobile-w {
         position: absolute;

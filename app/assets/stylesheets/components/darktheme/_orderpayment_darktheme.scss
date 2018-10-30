@@ -10,7 +10,7 @@
   .adress, .product-amount, .lesson-amount {
     margin-top: 20px;
     margin-bottom: 10px;
-    background: #171717;
+    background: #242424;
     padding: $padding-large;
     border-radius: 1px;
     border: 1px solid $primary-opacified;
@@ -60,6 +60,15 @@
     background-color: $primary;
     color: black;
     transition: 0.1s background-color linear, 0.1s color linear;
+  }
+  span {
+    color: white;
+  }
+  .payments-separator {
+    border-left: 1px solid $primary-opacified;
+  }
+  hr {
+    border-top: 1px solid $primary-opacified;
   }
 }
 

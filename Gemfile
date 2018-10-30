@@ -76,6 +76,12 @@ gem "algoliasearch-rails"
 gem 'wicked_pdf'
 gem 'wkhtmltopdf-binary'
 
+#Rails variables in JS
+gem 'gon'
+
+#Models internationalization
+gem 'mobility', '~> 0.7.5'
+
 group :development, :test do
   gem 'better_errors'
   gem 'binding_of_caller'
