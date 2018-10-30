@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-  Vendez vos produits en ligne ! Les chapeaux uniques créés par Dominique Chapre. Achetez ses créations en ligne.
+  <%= t(:home_description) %>
 <% end %>
 <% content_for(:title_tag) do %>
-  Les créations textiles uniques de Dominique Chapre. Sa boutique en ligne regroupe ses chapeaux et créations artisanales.
+  <%= t(:home_title) %>
 <% end %>
 
 <%= render 'shared/home_pics' %>
@@ -21,9 +21,9 @@
   <div class="hidden-xs">
     <div class="banner">
       <div class="banner-content">
-        <h1>Les Chapeaux Uniques</h1>
-        <p>Créations par Dominique Chapre</p>
-        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-lg btn-home" %>
+        <h1><%= t(:home_h1)%></h1>
+        <p><%= t(:home_teaser)%></p>
+        <%= link_to t(:home_button), ceramiques_path, class: "btn btn-primary btn-lg btn-home" %>
       </div>
         <%= photo_update('productphoto', 30, '', '', 30, '.homepic', "Mise à jour photo d'accueil")%>
         <%= photo_update('productphotomobile', 30, '', '', 412, '.homepicmobile', "Mise à jour photo d'accueil pour mobiles")%>
@@ -35,9 +35,9 @@
   <div class="hidden-sm hidden-md hidden-lg">
     <div class="banner-xs">
       <div class="banner-content-xs">
-        <h1>Chapeaux</h1>
-        <p>Dominique Chapre</p>
-        <%= link_to "Voir les #{ENV['MODEL']}", ceramiques_path, class: "btn btn-primary btn-home" %>
+        <h1><%= t(:home_h1_mobile)%></h1>
+        <p><%= t(:home_teaser_mobile)%></p>
+        <%= link_to t(:home_button), ceramiques_path, class: "btn btn-primary btn-home" %>
       </div>
     </div>
   </div>
@@ -79,42 +79,42 @@
 
 <% content_for(:after_js) do %>
   <script type="application/ld+json">
-  {
-    "@context": "http://schema.org",
-    "@type": "ArtGallery",
-    "image": ["<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"],
-    "@id": "<%=request.original_url%>",
-    "name": "Les <%="chapeaux uniques créés par Dominique Chapre"%>",
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": "12 rue de la paix",
-      "addressLocality": "Paris",
-      "addressRegion": "IDF",
-      "postalCode": "75000",
-      "addressCountry": "FR"
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": <%= ENV['LAT'].to_f %>,
-      "longitude": <%= ENV['LAT'].to_f %>
-    },
-    "url": "<%=request.original_url%>",
-    "telephone": "<%= ENV['TELEPHONE']%>",
-    "openingHoursSpecification": [
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-        "opens": "10:00",
-        "closes": "17:00"
+    {
+      "@context": "http://schema.org",
+      "@type": "ArtGallery",
+      "image": ["<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"],
+      "@id": "<%=request.original_url%>",
+      "name": "Les <%="chapeaux uniques créés par Dominique Chapre"%>",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Cluzet",
+        "addressLocality": "Saint Julien Labrousse",
+        "addressRegion": "Ardèche",
+        "postalCode": "07160",
+        "addressCountry": "FR"
       },
-      {
-        "@type": "OpeningHoursSpecification",
-        "dayOfWeek": ["Saturday","Sunday"],
-        "opens": "closed",
-        "closes": "closed"
-      }
-    ],
-   "priceRange":"20€ à 800€"
-  }
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": <%= ENV['LAT'].to_f %>,
+        "longitude": <%= ENV['LAT'].to_f %>
+      },
+      "url": "<%=request.original_url%>",
+      "telephone": "<%= ENV['TELEPHONE']%>",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "10:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday","Sunday"],
+          "opens": "closed",
+          "closes": "closed"
+        }
+      ],
+     "priceRange":"210€ à 800€"
+    }
   </script>
 <% end %>

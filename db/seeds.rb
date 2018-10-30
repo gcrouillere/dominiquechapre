@@ -40,3 +40,29 @@ ISO3166::Country.countries.each do |country|
     end
   end
 end
+
+
+# DB translation
+
+# Article translation :
+require 'csv'
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'articles.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  Article.find_by_id(row['Id'].to_i).update(content: row['Content']) if Article.find_by_id(row['Id'].to_i)
+end
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'ceramiques.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  Ceramique.find_by_id(row['Id'].to_i).update(description: row['Description'], name: row['Nom']) if Ceramique.find_by_id(row['Id'].to_i)
+end
+
+csv_text = File.read(Rails.root.join('lib', 'seeds', 'categories.csv'))
+csv = CSV.parse(csv_text, :headers => true, :encoding => 'ISO-8859-1')
+csv.each do |row|
+  Category.find_by_id(row['Id'].to_i).update(name: row['Nom']) if Category.find_by_id(row['Id'].to_i)
+end
+
+Ceramique.reindex

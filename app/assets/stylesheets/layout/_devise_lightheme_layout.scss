@@ -1,3 +1,13 @@
+.body-devise {
+  .navbar-laptop-lighttheme, .navbar-mobile-lighttheme {
+    .nav-bar-list {
+      span {
+        color: black;
+      }
+    }
+  }
+}
+
 .devise-container-lighttheme {
     min-height: calc(100vh - 90px);
     #country {

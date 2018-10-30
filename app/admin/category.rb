@@ -2,12 +2,19 @@ ActiveAdmin.register Category do
   permit_params :name
   config.filters = false
   actions  :index, :new, :create, :destroy, :update, :edit
-  menu priority: 2
+  menu priority: 2, url: -> { admin_categories_path(locale: I18n.locale) }
 
   index do
     column :name
     actions
   end
+
+  form do |f|
+    f.inputs "" do
+      f.input :name
+    end
+    f.actions
+   end
 
   controller do
 

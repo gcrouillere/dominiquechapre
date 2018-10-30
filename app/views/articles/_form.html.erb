@@ -1,0 +1,9 @@
+<%= simple_form_for(Article.new) do |form| %>
+  <%= form.input :content, as: :text, required: true, label: t(:comment, count: 1) %>
+  <%= form.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+  <%= form.input :name, :as => :hidden, :input_html => { :value => "#{@article.id}-commentaire" } %>
+  <%= form.button :submit, t(:save), id: "temoignage-submit", class: "btn-primary" %>
+<% end %>
+
+
+

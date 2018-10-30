@@ -30,7 +30,7 @@
 
       <p>Pour assurer les livraisons, nous avons besoin de ces données : civilité, nom, prénom, adresse. Votre email est nécessaire pour vous envoyer un récapitulatif de commande après le paiement. Toutes ces données sont donc obligatoires lors de la création d'un compte. Si vous ne souhaitez pas nous communiquer ces données, vous ne pourrez pas accéder au paiement et donc pas finaliser le processus de commande.</p>
 
-      <p>Le destinataire des données est <%="#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>.</p>
+      <p>L'utilisateur unique des données est <%="#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>. </p>
 
       <p>Pour corriger vos données, vous pouvez utiliser le formulaire situé à cette adresse :  <%= link_to "Mettre à jour vos données", edit_user_registration_path %> ou contacter <%="#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>.</p>
 

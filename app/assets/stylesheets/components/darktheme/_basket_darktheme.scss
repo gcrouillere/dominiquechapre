@@ -13,7 +13,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #171717;
+  background: #242424;
   padding: $padding-small;
   border-radius: $project-border-radius;
   border-bottom: 1px solid $primary-opacified;
@@ -60,6 +60,9 @@
   align-items: center;
   margin-top: 35px;
   margin-bottom: 50px;
+  label {
+    color: white;
+  }
   .cost-details {
     width: 400px;
      margin-right: 20px;
@@ -102,7 +105,7 @@
 .basket-item.mobile-darktheme {
   margin: 0px 10px 10px 10px;
   justify-content: space-around;
-  background: #171717;
+  background: #242424;
   border-bottom: 1px solid $primary-opacified;
     &:nth-child(1) {
     border-top: 1px solid $primary-opacified;
@@ -120,12 +123,13 @@
 }
 
 .content-darktheme {
-  .payment-form .input-label-take-away label {
+  .payment-form label {
     color: white;
   }
 }
 
 .total.mobile {
+  justify-content: center;
   margin-bottom: 30px;
   margin-top: 30px;
 }

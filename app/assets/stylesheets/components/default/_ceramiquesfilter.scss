@@ -20,17 +20,15 @@
 
   }
   h2 {
-    font-size: 31px;
     font-weight: 400;
+    letter-spacing: 2px;
     text-align: center;
-    border-bottom: 1px solid $primary;
+    font-size: 30px;
     margin-bottom: 20px;
-    margin-top: -5px;
-    color: #444;
-    /* background: #FF9F1C; */
-    border-radius: 1px;
-    padding: 10px;
-    /* box-shadow: 1px 1px 1px grey; */
+    margin-top: 5px;
+    color: black;
+    padding: 0 0 10px 0;
+    border-bottom: 1px solid $primary;
   }
 
   h3 {

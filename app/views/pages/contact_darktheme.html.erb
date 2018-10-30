@@ -1,8 +1,8 @@
 <% content_for(:description) do %>
-  Découvrez les créations textiles dans la boutique.
+  <%= t(:info_description)%>
 <% end %>
 <% content_for(:title_tag) do %>
-  Dominique Chapre modiste et créatrice textile.
+  <%= t(:info_title)%>
 <% end %>
 
 <%= render 'shared/info_pics' %>
@@ -105,19 +105,44 @@
         handler.getMap().setZoom(6);
       });
     });
-   </script>
+  </script>
   <script type="application/ld+json">
     {
       "@context": "http://schema.org",
       "@type": "ArtGallery",
+      "image": ["<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"],
+      "@id": "<%=request.original_url%>",
       "name": "Les <%="chapeaux uniques créés par Dominique Chapre"%>",
-      "description": "Online craft store",
-      "openingHours": "Mo-Fr 09:00-18:00",
-      "telephone": "<%= ENV['TELEPHONE']%>",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Cluzet",
+        "addressLocality": "Saint Julien Labrousse",
+        "addressRegion": "Ardèche",
+        "postalCode": "07160",
+        "addressCountry": "FR"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": <%= ENV['LAT'].to_f %>,
+        "longitude": <%= ENV['LAT'].to_f %>
+      },
       "url": "<%=request.original_url%>",
-      "image":"<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"
-      "address":"<%= ENV['ADDRESS'].gsub(/[+]/, ' ') %>",
-      "priceRange":"20€ à 800€"
+      "telephone": "<%= ENV['TELEPHONE']%>",
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+          "opens": "10:00",
+          "closes": "17:00"
+        },
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Saturday","Sunday"],
+          "opens": "closed",
+          "closes": "closed"
+        }
+      ],
+     "priceRange":"210€ à 800€"
     }
   </script>
  <% end %>

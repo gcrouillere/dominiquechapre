@@ -1,17 +1,20 @@
 <% content_for(:description) do %>
-Chaque pièce est unique. Découvrez dans la boutique tous les modèles et leurs matières originales.
+  <%= t(:index_description)%>
 <% end %>
 <% content_for(:title_tag) do %>
-  Les chapeaux uniques créés par Dominique Chapre. Achetez ses créations en ligne.
+  <%= t(:index_title)%>
 <% end %>
-
 <% if @front_offer %>
   <% content_for(:meta_image) do %>
     <%= cl_image_path @front_offer.ceramiques.first.photos[0].path %>
   <% end %>
   <% content_for(:description) do %>
-    <% @front_offer.discount > 0 ? discount = " - Réduction de #{(@front_offer.discount * 100).to_i} % " : discount = "" %>
-    <%= "#{@front_offer.title} #{discount} - #{@front_offer.description}".squish %>
+    <% @front_offer.discount > 0 ? discount = t(:discount_percentage, amount: "#{(@front_offer.discount * 100).to_i}") : discount = "" %>
+    <%= "#{@front_offer.title} - #{discount} - #{@front_offer.description}".squish %>
+  <% end %>
+<% else %>
+  <% content_for(:description) do %>
+    <%= t(:index_description)%>
   <% end %>
 <% end %>
 
@@ -63,8 +66,8 @@ Chaque pièce est unique. Découvrez dans la boutique tous les modèles et leurs
       <% else %>
         <div class="col-xs-12 no-ceramique-list">
           <div class="no-ceramique">
-            <p>Nous sommes désolés, aucun produit ne correspond à cette recherche</p>
-            <%= link_to "AFFICHER TOUS LES PRODUITS", ceramiques_path, class: "btn btn-primary lighttheme" %>
+            <p><%=t(:no_product)%></p>
+            <%= link_to t(:all_products), ceramiques_path, class: "btn btn-primary" %>
           </div>
         </div>
       <% end %>
@@ -82,7 +85,7 @@ Chaque pièce est unique. Découvrez dans la boutique tous les modèles et leurs
     "image": <%= raw @ceramiques.map {|ceramique| cl_image_path ceramique.photos[0].path}.to_json %>,
     "brand": {
       "@type": "Thing",
-      "name": "<%="#{ENV['LASTNAME'].capitalize}"%>"
+      "name": "Dominique Chapre"
     },
     "offers": {
       "@type": "AggregateOffer",

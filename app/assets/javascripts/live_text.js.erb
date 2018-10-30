@@ -27,4 +27,11 @@ $(document).ready(function() {
     html = converter.makeHtml(text);
       $('#live-text4').html(html);
   });
+
+  $('#article_title').keyup(function() {
+    text = $(this).val(),
+    $('#h1-live_article_title').html("<h1>" + text + "</h1>");
+  });
+
+
 });
