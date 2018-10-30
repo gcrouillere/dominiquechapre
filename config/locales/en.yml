@@ -73,7 +73,7 @@ en:
   les_produits_de_machin: "%{name}'s %{product}"
   same_category_products: "Discover other products in the same category:"
   name: "%{name}"
-  first_day: "Your course's first day"
+  first_day: "Select your course in the list"
   clic_on_calendar: "Clic on calendar icon to select a date"
   clic_on_calendar_mobile: "Clic on calendar"
   course_request: "request a reservation"

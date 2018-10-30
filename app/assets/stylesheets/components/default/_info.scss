@@ -101,13 +101,7 @@
   .img-avatar-mobile {
     text-align: center;
     img {
-      width: $mobile-avatar-image-width;
-      height: $mobile-avatar-image-width;
-      border: 1px solid white;
-      box-shadow: 1px 1px 1px grey;
-      border-radius: 50%;
-      top: 48px;
-      right: 12px;
+      width: 100%;
     }
   }
   h1 {

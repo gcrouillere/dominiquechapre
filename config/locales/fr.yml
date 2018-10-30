@@ -72,7 +72,7 @@ fr:
   les_produits_de_machin: "Les %{product} de %{name}"
   same_category_products: "Retrouvez d'autres produits dans la même catégorie : "
   name: "%{name}"
-  first_day: "1er jour de stage"
+  first_day: "Sélectionnez le stage dans la liste"
   clic_on_calendar: "Cliquez sur l'icône calendrier pour sélectionner une date"
   clic_on_calendar_mobile: "Clic sur le calendrier"
   course_request: "demander une réservation"

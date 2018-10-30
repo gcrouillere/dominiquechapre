@@ -20,14 +20,14 @@
         <%= facebook_share_id("facebookshare") %>
         <% if @input_dates_collection.size > 0 %>
           <%= simple_form_for @lesson do |f| %>
-            <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, label: "Sélectionnez le nombre de participants", selected: ENV['MINBOOKING'].to_i %>
-            <label for="calendar_update_ref">* Sélectionnez le stage dans la liste</label>
+            <%= f.input :student, collection: ENV['MINBOOKING'].to_i..ENV['CAPACITY'].to_i, selected: ENV['MINBOOKING'].to_i %>
+            <label for="calendar_update_ref">* <%=t(:first_day)%></label>
             <%= f.select :calendar_update_ref, options_for_select(@input_dates_collection), class: "date-select" %>
             <% if user_signed_in? %>
               <%= f.hidden_field :user_id, value: current_user.id %>
             <% end %>
             <div class="submit-div-stage">
-              <%= f.submit "demander une réservation", class: "btn btn-primary stage-btn" %>
+              <%= f.submit t(:course_request), class: "btn btn-primary stage-btn" %>
             </div>
           <% end %>
         <% else %>
@@ -61,7 +61,7 @@
               <%= f.hidden_field :user_id, value: current_user.id %>
             <% end %>
             <div class="submit-div-stage">
-              <%= f.submit "demander une réservation", class: "btn btn-primary stage-btn" %>
+              <%= f.submit t(:course_request), class: "btn btn-primary stage-btn" %>
             </div>
           <% end %>
         <% else %>
