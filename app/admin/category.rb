@@ -8,7 +8,7 @@ ActiveAdmin.register Category do
     column :name
     actions
   end
-
+  
   form do |f|
     f.inputs "" do
       f.input :name
