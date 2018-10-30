@@ -9,6 +9,12 @@ ActiveAdmin.register Category do
     actions
   end
 
+  csv do
+    column :created_at
+    column :name
+    column :id
+  end
+
   controller do
 
    def create

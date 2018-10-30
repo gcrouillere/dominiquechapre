@@ -51,6 +51,8 @@ show do |ceramique|
  end
 
  csv do
+    column :created_at
+    column :id
     column :name
     column :description
     column :stock
