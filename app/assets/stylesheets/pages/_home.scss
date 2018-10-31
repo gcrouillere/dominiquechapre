@@ -14,7 +14,6 @@
   .banner-content {
     position: absolute;
     top: 150px;
-    left: calc(50% - 457px);
     text-align: center;
     color: $home-font-color;
     padding: 0 10px;
@@ -43,7 +42,6 @@
       position: absolute;
       top: 70px;
       text-align: center;
-      left: calc(50% - 126px);
       color: $home-font-color;
       padding: 0 10px;
       h1, h2, h3, p {
