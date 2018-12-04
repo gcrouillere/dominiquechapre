@@ -109,5 +109,12 @@
   "description": "<%= sanitize(truncate(@article.content.gsub("\r","").gsub("\n","").gsub("#",""), length: 200)) %>"
 }
 </script>
+<script
+    type="text/javascript"
+    async defer
+    src="//assets.pinterest.com/js/pinit.js"
+    data-pin-round="true"
+    data-pin-tall="15px"
+></script>
 <%= render 'shared/facebookshare' %>
 <% end %>
