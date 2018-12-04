@@ -24,7 +24,7 @@
       </tr>
       <% resource.basketlines.each do |basketline| %>
       <tr>
-        <td><%= basketline.ceramique_name.capitalize %></td>
+        <td><%= basketline.ceramique_name.capitalize %>. ID: <%= basketline.ceramique_id_on_order %></td>
         <td><%= basketline.ceramique_qty %></td>
         <td><%= humanized_money(basketline.basketline_price * (1 - ENV['TVA'].to_f)) %> €</td>
         <td><%= humanized_money(basketline.basketline_price * ENV['TVA'].to_f) %> €</td>

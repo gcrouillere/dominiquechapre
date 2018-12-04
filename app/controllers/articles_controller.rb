@@ -12,6 +12,7 @@ class ArticlesController < ApplicationController
   def show
     @article = Article.find(params[:id])
     @comments = Article.where(name: "#{@article.id}-commentaire").order(updated_at: :desc)
+    @twitter_url = request.original_url.to_query('url')
   end
 
   def create

@@ -29,6 +29,9 @@ ActiveAdmin.register Ceramique, as: 'Produits' do
       f.input :weight, :hint => "Poids en grammes"
       f.input :category
       f.input :price_cents, :hint => "Prix en centimes d'euros. Ex: entrez 1200 pour un prix de 12 €"
+    end
+    f.inputs "Images", class: 'product_images' do
+      f.object.photos.each {|photo| img(src: cl_image_path(photo.path, :width=>250, :crop=>"scale"))} unless f.object.new_record?
       f.input :photos, :as => :formtastic_attachinary, :hint => "Sélectionnez les photos du produit. Maintenez Ctrl appuyé pour en sélectionner plusieurs."
     end
     f.actions
@@ -46,7 +49,7 @@ show do |ceramique|
     row :price_cents
     row :images do |ceramique|
       ceramique.photos.each do |photo|
-        span img(src: "http://res.cloudinary.com/#{ENV['CLOUDINARY_NAME']}/image/upload/#{photo.path}")
+        span img(src: cl_image_path(photo.path, :width=>250, :crop=>"scale"))
       end
     end
   end
