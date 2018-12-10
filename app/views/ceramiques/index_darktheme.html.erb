@@ -194,25 +194,8 @@
   </div>
 </div>
 
+<%= render 'shared/schema_org_jsons/ceramiques_index_json' %>
 <% content_for(:after_js) do %>
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org/",
-    "@type": "Product",
-    "name": "Les <%="chapeaux uniques créés par Dominique Chapre"%>",
-    "image": <%= raw @ceramiques.map {|ceramique| cl_image_path ceramique.photos[0].path}.to_json %>,
-    "brand": {
-      "@type": "Thing",
-      "name": "Dominique Chapre"
-    },
-    "offers": {
-      "@type": "AggregateOffer",
-      "lowPrice": "<%= humanized_money((@ceramiques.minimum(:price_cents) || 0) / 100) %>",
-      "highPrice": "<%= humanized_money((@ceramiques.maximum(:price_cents) || 0) / 100) %>",
-      "priceCurrency": "EUR"
-    }
-  }
-  </script>
   <script
   type="text/javascript"
   async defer
