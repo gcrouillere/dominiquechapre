@@ -184,33 +184,6 @@
 </div>
 
 <% content_for(:after_js) do %>
-  <script type="application/ld+json">
-  {
-    "@context": "http://schema.org/",
-    "@type": "Product",
-    "name": "<%=@ceramique.name.capitalize%>",
-    "image": [
-      "<%=cl_image_path @ceramique.photos[0].path%>"
-     ],
-    "description": "<%=@ceramique.description%>",
-    "brand": {
-      "@type": "Thing",
-      "name": "<%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>"
-    },
-    "offers": {
-      "@type": "Offer",
-      "priceCurrency": "EUR",
-      "price": "<%= humanized_money(@ceramique.price)%>",
-      "priceValidUntil": "2020-12-12",
-      "itemCondition": "http://schema.org/UsedCondition",
-      "availability": "http://schema.org/InStock",
-      "seller": {
-        "@type": "Organization",
-        "name": "<%= "#{ENV['FIRSTNAME'].capitalize} #{ENV['LASTNAME'].capitalize}"%>"
-      }
-    }
-  }
-  </script>
   <script
     type="text/javascript"
     async defer
@@ -220,3 +193,4 @@
 ></script>
 <%= render 'shared/facebookshare' %>
 <% end %>
+<%= render 'shared/schema_org_jsons/ceramique_show_json' %>

@@ -1,3 +1,7 @@
+<% content_for(:noindex) do %>
+<meta name="robots" content="noindex">
+<% end %>
+
 <%- if devise_mapping.omniauthable? %>
   <%- resource_class.omniauth_providers.each do |provider| %>
     <div class="facebook-block">
