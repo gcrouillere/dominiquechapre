@@ -31,6 +31,24 @@ class CeramiquesController < ApplicationController
     render "show_#{@active_theme.name}"
   end
 
+  def update
+    @ceramique = Ceramique.find(params[:id])
+    @fieldvalue =  @ceramique.send(get_editing_field)
+    if @ceramique.update(ceramique_params)
+      render json: @ceramique
+    else
+      render json: {id: @ceramique.id, fieldvalue: @fieldvalue, errors: @ceramique.errors}, status: :unprocessable_entity
+    end
+  end
+
+  def update_positions_after_swap_in_admin
+    params[:finalPositions].gsub("]","").gsub("[", "").split(",").map(&:to_i).each_with_index do |position, index|
+      Ceramique.find(position).update(position: index + params[:startingPosition].to_i)
+    end
+    @ceramiques = Ceramique.all.order(position: :asc).order(updated_at: :desc)
+    render json: @ceramiques
+  end
+
   private
 
   def clean_orders
@@ -67,6 +85,18 @@ class CeramiquesController < ApplicationController
     raw_json = Ceramique.raw_search(params[:search])
     ceramiques_ids = raw_json["hits"].map {|hit| hit["objectID"].to_i}
     @ceramiques = @ceramiques.where(id: ceramiques_ids)
+  end
+
+  def ceramique_params
+    if params[:ceramique][:category].present?
+      params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description).merge(category_id: Category.i18n.where(name: params[:ceramique][:category]).first.id)
+    else
+      params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description)
+    end
+  end
+
+  def get_editing_field
+    params.require(:ceramique).permit(:name, :stock, :weight, :price_cents, :description, :category).to_h.map {|k, v| k }.join
   end
 end
 
