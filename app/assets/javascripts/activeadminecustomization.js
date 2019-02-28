@@ -168,7 +168,7 @@ clickOnEditableCell = (event) => {
         // UPDATE DB
         $.ajax({
           type: "PATCH",
-          url: `${urlRoot}/produits/${productID}`,
+          url: `${urlRoot}/chapeaux/${productID}`,
           dataType: "JSON",
           data: {ceramique: {[updatingField]: newValue}}
         }).done((data) => {
