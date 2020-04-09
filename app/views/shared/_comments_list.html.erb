@@ -1,0 +1,8 @@
+<div class="article-comments-list">
+  <% if @comments %>
+    <h2><%=t(:comment, count:@comments.size ) %> : </h2>
+    <% @comments.each do |comment| %>
+        <%= render 'articles/comment_show', comment: comment %>
+    <% end %>
+  <% end %>
+</div>

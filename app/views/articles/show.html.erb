@@ -1,5 +1,5 @@
 <% content_for(:description) do %>
-  <%= sanitize(truncate(@article.content.gsub("\r","").gsub("\n","").gsub("#",""), length: 200)) %>
+  <%= (@article.content || "")[0..200].gsub(/<(?:.|\n)*?>/, '') %>
 <% end %>
 <% content_for(:title_tag) do %>
   <%= t(:blog_main_title, name: "#{ENV['FIRSTNAME'].upcase} #{ENV['LASTNAME'].upcase}")%>. <%= @article.title %>
@@ -11,19 +11,6 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-
-      <% if user_signed_in? && current_user.admin %>
-        <div class="article-edit">
-          <% @markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML, extensions = {}) %>
-          <% @markdown = @markdown.render(@article.content || "") %>
-          <%= render 'shared/articletyping' %>
-        </div>
-        <div class="article-comments-list">
-          <% @comments.each do |comment| %>
-              <%= render 'articles/comment_show', comment: comment %>
-          <% end %>
-        </div>
-      <% else %>
 
         <div id="article-show">
           <div class="article-top-bloc">
@@ -48,7 +35,7 @@
           </div>
           <% article_display("article", "horizontal") %>
           <div class="article-content">
-            <%= @markdown.html_safe %>
+            <%= (@article.content || "").html_safe %>
           </div>
         </div>
         <hr>
@@ -64,18 +51,8 @@
               <i class="fa fa-arrow-right"></i> <%=t(:connect_to_comment)%>
             <% end %>
           <% end %>
-
-          <div class="article-comments-list">
-            <% if @comments.any? %>
-              <h2><%=t(:comment, count:@comments.size ) %> : </h2>
-              <% @comments.each do |comment| %>
-                  <%= render 'articles/comment_show', comment: comment %>
-              <% end %>
-            <% end %>
-          </div>
+          <%= render 'shared/comments_list' %>
         </div>
-
-      <% end %>
 
     </div>
   </div>
@@ -106,7 +83,7 @@
       "url": "<%=request.original_url%><%= image_path ENV['HOMEPIC']%>"
     }
   },
-  "description": "<%= sanitize(truncate(@article.content.gsub("\r","").gsub("\n","").gsub("#",""), length: 200)) %>"
+  "description": "<%= (@article.content || "")[0..200].gsub(/<(?:.|\n)*?>/, '') %>"
 }
 </script>
 <script

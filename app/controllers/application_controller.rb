@@ -24,7 +24,7 @@ class ApplicationController < ActionController::Base
   end
 
   def retrieve_admin
-    @admin = ::User.where(admin: true).first
+    @admin = ::User.where(admin: true).includes(:logophoto_files).first
   end
 
   def check_theme
@@ -32,10 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   def uniq_categories
-    @uniq_categories = ::Ceramique.all.map do |ceramique|
-      ceramique.category.name
-    end
-    @uniq_categories = @uniq_categories.uniq.sort
+    @uniq_categories = ::Category.joins(:ceramiques).distinct
   end
 
   #DEVISE methods:

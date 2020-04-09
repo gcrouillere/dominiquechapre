@@ -50,34 +50,7 @@
 <!-- LAPTOP -->
     <div class="hidden-xs hidden-sm hidden-md col-lg-3">
       <div id="ceramique-filters-content">
-        <h2><%= t(:filter) %></h2>
-        <form action="/<%=ENV['MODEL']%>" method='get'>
-          <input type="search" id="aa-search-input" class="aa-input-search" placeholder="<%=t(:search_place_holder)%>" name="search" autocomplete="off" />
-          <a href="https://www.algolia.com" class="lienalgolia" target="blank"><%= image_tag "algolia.png", class: "algolialogo", alt: "Lien vers Algolia"%></a>
-          <div class="category-filter filter">
-            <h3><%= t 'activerecord.models.category', count: @uniq_categories.size %></h3>
-            <div class="filter-category">
-              <ul>
-                <% @uniq_categories.each do |category| %>
-                  <li><label class="label-search"><input type="checkbox" name="categories[]" value="<%= category %>"><%= category.capitalize %></label></li>
-                <% end %>
-              </ul>
-              <h3><%=t(:max_price)%></h3>
-              <section class="range-slider">
-                <span class="rangeValues"></span>
-                <% max = (Ceramique.maximum(:price_cents) || 0)/ 100 %>
-                <% min = (Ceramique.minimum(:price_cents) || 0)/ 100 %>
-                <input name="prix_min" value="<%= min %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
-                <input name="prix_max" value="<%= max %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
-              </section>
-            </div>
-            <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? || params[:search].present?%>
-              <label class="label-search all"><input type="checkbox" name="all[]" value="all"><%=t(:display_all)%></label>
-            <% end %>
-            <input type="hidden" name="locale" value="<%= I18n.locale%>">
-            <input type="submit" id="recherche" class="btn btn-primary recherche" value="<%=t(:display)%>">
-          </div>
-        </form>
+        <%= render 'shared/ceramiques_filter', device: "", show_cross: false, theme: "white" %>
       </div>
     </div>
 
@@ -102,35 +75,7 @@
 
 <div class="hidden-lg">
   <div id="ceramique-filters-content-mobile">
-    <h2>Filtrer<i id="close-search" class="fa fa-times-circle cross-1" aria-hidden="true"></i></h2>
-    <form action="/<%=ENV['MODEL']%>" method='get'>
-      <div class="form-body">
-      <input type="search" id="aa-search-input2" class="aa-input-search aa-input-mobile" placeholder="Que recherchez-vous ?" name="search" autocomplete="off" />
-        <h3><%= t 'activerecord.models.category', count: @uniq_categories.size %></h3>
-        <div class="filter-category">
-          <ul>
-            <% @uniq_categories.each do |category| %>
-              <li><label class="label-search"><input type="checkbox" name="categories[]" value="<%= category %>"><%= category %></label></li>
-            <% end %>
-          </ul>
-          <h3><%=t(:max_price)%></h3>
-          <section class="range-slider">
-            <span class="rangeValues"></span>
-            <% max = (Ceramique.maximum(:price_cents) || 0)/ 100 %>
-            <% min = (Ceramique.minimum(:price_cents) || 0)/ 100 %>
-            <input name="prix_min" value="<%= min %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
-            <input name="prix_max" value="<%= max %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
-          </section>
-        </div>
-        <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? || params[:search].present?%>
-          <label class="label-search all"><input type="checkbox" name="all[]" value="all"><%=t(:display_all)%></label>
-        <% end %>
-      </div>
-      <div class="mobile-submit">
-        <input type="hidden" name="locale" value="<%= I18n.locale%>">
-        <input type="submit" id="recherche" class="btn btn-primary recherche" value="<%=t(:display_mobile)%>">
-      </div>
-    </form>
+    <%= render 'shared/ceramiques_filter', { device: "mobile", show_cross: true, theme: "white" } %>
   </div>
 </div>
 

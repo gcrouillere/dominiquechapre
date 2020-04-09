@@ -1,0 +1,43 @@
+.text-editor-form {
+  width: 100%;
+  .ql-container {
+    height: auto !important;
+    color: black;
+    margin-bottom: 10px;
+  }
+  .ql-snow a {
+    color: black
+  }
+}
+
+
+.text-editor-form.dark {
+  .ql-toolbar.ql-snow {
+    background: white;
+  }
+  .ql-editor {
+    a {
+      color: white
+    }
+  }
+}
+
+.ql-editor.sucess {
+  animation: sucessupdate 3s;
+}
+
+.ql-editor.failure {
+  animation: failupdate 3s;
+}
+
+@keyframes failupdate {
+  from {
+    background: linear-gradient(180deg, #f26a6a, #dfcccc);
+  }
+}
+
+@keyframes sucessupdate {
+  from {
+    background: linear-gradient(180deg, #74db7c, #7dd882);
+  }
+}
