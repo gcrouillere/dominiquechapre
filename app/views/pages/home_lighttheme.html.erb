@@ -36,24 +36,12 @@
   </div>
 
   <div class="hometext hidden-xs hidden-sm">
-    <% if user_signed_in? && current_user.admin %>
-      <% article_typing("accueil_lighttheme", "vertical", "markdown1", "live-text4", "input4") %>
-      <% @markdown = @markdown1 %>
-      <div class="live-text ">
-        <%= render 'shared/articletyping' %>
-      </div>
-    <% else %>
-      <div class="plain-text">
-        <% article_display("accueil_lighttheme", "vertical") %>
-        <%= @markdown.html_safe %>
-      </div>
-    <% end %>
+    <%= render 'shared/article_display_quill', article_name: "accueil_lighttheme", id: 0, display_only: false, additional_class: "" %>
   </div>
 
   <div class="hometext-mobile hidden-md hidden-lg">
     <div class="plain-text">
-      <% article_display("accueil_lighttheme", "vertical") %>
-      <%= @markdown.html_safe %>
+      <%= render 'shared/article_display_quill', article_name: "accueil_lighttheme", id: 1, display_only: true, additional_class: "" %>
     </div>
   </div>
 

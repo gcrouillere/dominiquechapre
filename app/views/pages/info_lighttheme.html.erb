@@ -15,17 +15,9 @@
       <div class="wrapper-lighttheme">
         <%= photo_update('avatarphoto', 35, '', '', 15, '.avatarpic', "Mise à jour photo perso")%>
         <%= @avatarpictag %>
-
-        <% if user_signed_in? && current_user.admin %>
-          <% article_typing("info", "horizontal", "markdown1", "live-text1", "input1") %>
-          <% @markdown = @markdown1 %>
-          <%= render 'shared/articletyping' %>
-        <% else %>
-            <div id="live-text">
-              <% article_display("info", "horizontal") %>
-              <%= @markdown.html_safe %>
-            </div>
-        <% end %>
+        <div id="live-text">
+          <%= render 'shared/article_display_quill', article_name: "info", id: 0, display_only: false, additional_class: "" %>
+        </div>
       </div>
 
       <div class="localisation">
@@ -40,7 +32,7 @@
    <div class="col-xs-12 hidden-md hidden-lg mobile-info">
       <div class="wrapper-mobile-lightheme">
         <div class="img-avatar-mobile"><%= @avatarpictagmobile %></div>
-        <%= @markdown.html_safe %>
+        <%= render 'shared/article_display_quill', article_name: "info", id: 1, display_only: true, additional_class: "" %>
       </div>
 
       <div class="localisation-mobile">

@@ -1,9 +1,23 @@
 <div class="container new-article">
   <div class="row">
     <div class="col-xs-12">
-      <% article_typing("article", "vertical", "markdown1", "live-text1", "input1") %>
-      <% @markdown = @markdown1 %>
-      <%= render 'shared/articletyping' %>
+      <div class="article-header">
+        <%= simple_form_for @article do |f| %>
+          <%= f.error_notification %>
+          <%= f.input :title %>
+          <%= f.input :article_main_photo, as: :attachinary %>
+          <%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %>
+          <%= f.input :id, :as => :hidden, :input_html => { :value => @article.id } %>
+          <%= f.input :name, :as => :hidden, :input_html => { :value => "article" } %>
+          <%= f.button :submit, "Enregistrer le titre et la photo", class: "btn btn-primary text-save-btn", name: "button" %>
+        <% end %>
+      </div>
+      <%= render 'shared/article_display_quill', article_name: "article", id: 0, display_only: false, additional_class: "" %>
+
+      <div class="commentsbloc">
+        <%= render 'shared/comments_list' %>
+      </div>
     </div>
   </div>
 </div>
+

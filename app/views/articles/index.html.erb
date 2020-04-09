@@ -42,7 +42,7 @@
               </div>
 
               <div class="right-block-article hidden-xs">
-                <p><%= sanitize(truncate(article.content.gsub("\r","").gsub("\n","").gsub("#",""), length: 200)) %></p>
+                <p><%= (article.content || "").html_safe %></p>
               </div>
             </div>
             <% end %>

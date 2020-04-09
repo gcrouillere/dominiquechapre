@@ -12,18 +12,7 @@
 
    <div class="row CGV">
     <div class="col-xs-12 CGV">
-      <% if user_signed_in? && current_user.admin %>
-        <% article_typing("cgv", "vertical", "markdown1", "live-text1", "input1") %>
-        <% @markdown = @markdown1 %>
-        <div class="live-text">
-          <%= render 'shared/articletyping' %>
-        </div>
-      <% else %>
-        <div class="plain-text">
-          <% article_display("cgv", "vertical") %>
-          <%= @markdown.html_safe %>
-        </div>
-      <% end %>
+      <%= render 'shared/article_display_quill', article_name: "cgv", id: 0, display_only: false, additional_class: "" %>
     </div>
   </div>
 </div>

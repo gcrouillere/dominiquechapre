@@ -1,0 +1,42 @@
+<h2><%= t(:filter) %>
+  <% if show_cross %>
+    <i id="close-search" class="fa cross-1" aria-hidden="true">&times;</i>
+  <% end %>
+</h2>
+<form action="/<%=ENV['MODEL']%>" method='get'>
+  <input type="search" id="aa-search-input" class="<%= "aa-input-search aa-input-#{device}" %>" placeholder="<%=t(:search_place_holder)%>" name="search" autocomplete="off" />
+  <a href="https://www.algolia.com" class="<%="lienalgolia #{device == 'mobile' ? "hidden" : ""}"%>" target="blank">
+    <% theme == "dark" ? algolia = "-white" : algolia =""%>
+    <%= image_tag "algolia#{algolia}.png", class: "algolialogo", alt: "Lien vers Algolia"%>
+  </a>
+  <div class="category-filter filter">
+    <h3><%= t 'activerecord.models.category', count: @uniq_categories.size %></h3>
+    <div class="filter-category">
+      <ul>
+        <% @uniq_categories.each do |category| %>
+          <li><label class="label-search"><input type="checkbox" name="categories[]" value="<%= category.name %>"><%= category.name.capitalize %></label></li>
+        <% end %>
+      </ul>
+      <h3><%=t(:max_price)%></h3>
+      <section class="range-slider">
+        <span class="rangeValues <%= algolia %>"></span>
+        <% max = (Ceramique.maximum(:price_cents) || 0)/ 100 + 1 %>
+        <% min = (Ceramique.minimum(:price_cents) || 0)/ 100 %>
+        <input name="prix_min" value="<%= min %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
+        <input name="prix_max" value="<%= max %>" min="<%= min %>" max="<%= max %>" step="1" type="range">
+      </section>
+    </div>
+    <% if  params[:categories].present? || params[:prix_max].present? || params[:offer].present? || params[:search].present?%>
+      <label class="label-search all"><input type="checkbox" name="all[]" value="all"><%=t(:display_all)%></label>
+    <% end %>
+    <%if device == "mobile" %>
+      <div class="mobile-submit">
+        <input type="hidden" name="locale" value="<%= I18n.locale%>">
+        <input type="submit" id="recherche" class="btn btn-primary recherche" value="<%=t(:display_mobile)%>">
+      </div>
+    <% else %>
+      <input type="hidden" name="locale" value="<%= I18n.locale%>">
+      <input type="submit" id="recherche" class="btn btn-primary recherche" value="<%=t(:display)%>">
+    <% end %>
+  </div>
+</form>

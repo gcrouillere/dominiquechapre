@@ -9,25 +9,18 @@
 
  <div class="contact-coord">
   <div class="col-md-12 hidden-xs hidden-sm coord">
-    <% if user_signed_in? && current_user.admin %>
-      <% article_typing("contact", "vertical", "markdown1", "live-text1", "input1") %>
-      <% @markdown = @markdown1 %>
-      <div class="live-text">
-        <%= render 'shared/articletyping' %>
+    <div class="plain-text">
+      <%= render 'shared/article_display_quill', article_name: "contact", id: 0, display_only: false, additional_class: "dark" %>
+      <div class="social-buttons-contact">
+        <a class="twitter-share-button" href="#"><i class="fab fa-twitter-square"></i></a>
+        <a id="facebook-contact" href="#"><i class="fab fa-facebook"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
       </div>
-    <% else %>
-      <div class="plain-text">
-        <% article_display("contact", "vertical") %>
-        <%= @markdown.html_safe %>
-        <div class="social-buttons-contact">
-          <a id="facebook-contact" href="https://www.facebook.com/ChapeauxDominiqueChapre/" target="blank"><i class="fab fa-facebook"></i></a>
-        </div>
-      </div>
-    <% end %>
+    </div>
   </div>
   <div class="col-xs-12 hidden-md hidden-lg coord">
     <div class="live-text">
-      <%= @markdown.html_safe %>
+      <%= render 'shared/article_display_quill', article_name: "contact", id: 1, display_only: true, additional_class: "dark" %>
     </div>
     <div class="social-buttons-contact">
       <a id="facebook-contact" href="https://www.facebook.com/ChapeauxDominiqueChapre/" target="blank"><i class="fab fa-facebook"></i></a>

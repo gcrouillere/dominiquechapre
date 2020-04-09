@@ -4,7 +4,7 @@ class CeramiquesController < ApplicationController
   def index
     @dev_redirection = "https://www.creermonecommerce.fr/product_claim_details"
     @ceramiques = Ceramique.all
-    Offer.where(showcased: true).first ? (Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).first : nil) : nil
+    Offer.where(showcased: true).first ? (Offer.where(showcased: true).first.ceramiques.present? ? @front_offer = Offer.all.where(showcased: true).includes(:ceramiques).first : nil) : nil
     @front_offer ? @ceramiques_to_display_in_offer = Ceramique.all.where(offer: @front_offer) : nil
     clean_orders
     if params[:all].present?
@@ -15,7 +15,7 @@ class CeramiquesController < ApplicationController
       filter_globally if params[:search].present?
       filter_by_price if params[:prix_max].present?
     end
-    @ceramiques = Ceramique.where(id: @ceramiques.map(&:id)).order(position: :asc).order(updated_at: :desc)
+    @ceramiques = Ceramique.where(id: @ceramiques.map(&:id)).order(position: :asc).order(updated_at: :desc).includes(:photo_files).includes(:offer)
     @twitter_url = request.original_url.to_query('url')
     @facebookid = ""
     render "index_#{@active_theme.name}"

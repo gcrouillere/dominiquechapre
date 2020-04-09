@@ -47,33 +47,10 @@
 <div class="home-text home-text-darktheme hidden-xs hidden-sm">
   <div class="text">
     <div class="text-left col-xs-4">
-      <% if user_signed_in? && current_user.admin %>
-          <% article_typing("accueil-gauche", "vertical", "markdown1", "live-text1", "input1") %>
-          <% @markdown = @markdown1 %>
-          <div class="live-text">
-            <%= render 'shared/articletyping' %>
-          </div>
-      <% else %>
-        <div class="plain-text">
-          <% article_display("accueil-gauche", "vertical") %>
-          <%= @markdown.html_safe %>
-        </div>
-      <% end %>
+      <%= render 'shared/article_display_quill', article_name: "accueil-gauche", id: 0, display_only: false, additional_class: "dark" %>
     </div>
     <div class="text-right col-xs-8">
-      <% if user_signed_in? && current_user.admin %>
-          <% article_typing("accueil-droit", "vertical", "markdown2", "live-text2", "input2") %>
-          <% @markdown = @markdown2 %>
-          <div class="live-text">
-            <%= render 'shared/articletyping' %>
-          </div>
-      <% else %>
-        <div class="plain-text">
-          <% article_display("accueil-droit", "vertical") %>
-          <%= @markdown.html_safe %>
-        </div>
-      <% end %>
-
+      <%= render 'shared/article_display_quill', article_name: "accueil-gauche", id: 1, display_only: false, additional_class: "dark" %>
     </div>
 </div>
 
