@@ -45,7 +45,6 @@
             <div class="description">
               <h1> <%= @ceramique.name.capitalize%> </h1>
               <%= facebook_share_id("facebookshare") %>
-              <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe%> </p>
               <hr>
             </div>
             <div class="prix-form">
@@ -77,6 +76,8 @@
                   <h2 class="stock0"><%= t(:out_of_stock) %></h2>
               <% end %>
             </div>
+            <hr>
+            <p class="description"> <%= @ceramique.description.gsub(/\n/, '<br>').html_safe%> </p>
           </div>
           </div>
 

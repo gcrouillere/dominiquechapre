@@ -10,6 +10,9 @@ ActiveAdmin.register Lesson do
     column "Début" do |lesson|
        lesson.start.strftime("%d/%m/%Y")
     end
+    column "Stage" do |lesson|
+      lesson.calendarupdate.name
+    end
     column :student
     column "Client" do |lesson|
       lesson.user.email

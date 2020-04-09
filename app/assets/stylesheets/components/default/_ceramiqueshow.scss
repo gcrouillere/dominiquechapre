@@ -50,7 +50,6 @@
     .info-add-basket {
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       margin-left: 20px;
       background: $card-background;
       padding: $padding-large;
@@ -64,18 +63,20 @@
         font-weight: 500;
       }
       p.description {
-        margin-top: 20px;
         margin-bottom: 35px;
         margin-left: 10px;
         font-weight: $font-weight-h4;
         font-size: $font-size-h5;
       }
+      hr {
+        width: 100%;
+      }
       .description {
         position: relative;
         .social-buttons {
           position: absolute;
-          top: 0px;
-          right: 0px;
+          top: -10px;
+          right: -10px;
           font-size: 20px;
           .fa-facebook-square {
             color: #3b5998;
