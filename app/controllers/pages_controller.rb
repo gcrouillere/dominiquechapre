@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:home, :confirmation, :info, :contact, :google906057532e2dbb7e, :robots, :legal, :cgv]
 
   def home
-    @dev_redirection = "https://www.creermonecommerce.fr/"
+    @dev_redirection = "http://www.guillaumecrouillere.fr/"
     render "home_#{@active_theme.name}"
   end
 
@@ -11,21 +11,21 @@ class PagesController < ApplicationController
   end
 
   def info
-    @dev_redirection = "https://www.creermonecommerce.fr/#anchor-info"
+    @dev_redirection = "http://www.guillaumecrouillere.fr/#anchor-info"
     render "info_#{@active_theme.name}"
   end
 
   def contact
-    @dev_redirection = "https://www.creermonecommerce.fr/produits"
+    @dev_redirection = "http://www.guillaumecrouillere.fr/produits"
     render "contact_#{@active_theme.name}"
   end
 
   def legal
-    @dev_redirection = "https://www.creermonecommerce.fr/produits"
+    @dev_redirection = "http://www.guillaumecrouillere.fr/produits"
   end
 
   def cgv
-    @dev_redirection = "https://www.creermonecommerce.fr/produits"
+    @dev_redirection = "http://www.guillaumecrouillere.fr/produits"
   end
 
   def google906057532e2dbb7e
