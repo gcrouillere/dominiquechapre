@@ -11,21 +11,21 @@ class PagesController < ApplicationController
   end
 
   def info
-    @dev_redirection = "http://www.guillaumecrouillere.fr/#anchor-info"
+    @dev_redirection = "http://www.guillaumecrouillere.fr"
     render "info_#{@active_theme.name}"
   end
 
   def contact
-    @dev_redirection = "http://www.guillaumecrouillere.fr/produits"
+    @dev_redirection = "http://www.guillaumecrouillere.fr"
     render "contact_#{@active_theme.name}"
   end
 
   def legal
-    @dev_redirection = "http://www.guillaumecrouillere.fr/produits"
+    @dev_redirection = "http://www.guillaumecrouillere.fr"
   end
 
   def cgv
-    @dev_redirection = "http://www.guillaumecrouillere.fr/produits"
+    @dev_redirection = "http://www.guillaumecrouillere.fr"
   end
 
   def google906057532e2dbb7e

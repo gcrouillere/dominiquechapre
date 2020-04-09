@@ -9,7 +9,7 @@ class LessonsController < ApplicationController
   end
 
   def new
-    @dev_redirection = "http://www.guillaumecrouillere.fr/lessons/new"
+    @dev_redirection = "http://www.guillaumecrouillere.fr"
     @lesson = Lesson.new
     @input_dates_collection = available_dates_to_input
     @twitter_url = request.original_url.to_query('url')
