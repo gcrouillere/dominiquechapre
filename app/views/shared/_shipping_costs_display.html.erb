@@ -65,6 +65,7 @@
 
     function updateDOMWithShippingData(urlRoot, url_params, port_cost_exsits) {
       fetch(urlRoot + "/api/v1/shipping_categories/show" + url_params).then(response_api => response_api.json()).then((data_api) => {
+        console.log(data_api)
           if (port_cost_exsits) {
             $('.port-cost').each(function() {
               $(this).text(String(data_api.price_cents / 100).replace(".", ",")+ " €")

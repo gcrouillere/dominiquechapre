@@ -18,7 +18,7 @@
 
 <% if  @current_week_lessons_a.size > 0 %>
   <div class="current-lessons">
-    <h2>Liste des visites confirmées pour les 7 prochains jours :</h2>
+    <h2>Liste des stages confirmés pour les 7 prochains jours :</h2>
     <div class="lessons-list">
       <% @current_week_lessons_a.each do |lesson| %>
         <h3>Le <%="#{lesson.start.day} #{lesson.start.strftime("%B")} #{lesson.start.year}"%> - <%=lesson.student%> personnes - contact : <%=lesson.user.email %></h3>

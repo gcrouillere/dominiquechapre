@@ -35,14 +35,7 @@
         <% end %>
         <div class="text-container">
           <div class="texte-stage">
-            <% if user_signed_in? && current_user.admin %>
-              <% article_typing("stage", "horizontal", "markdown1", "live-text3", "input3") %>
-              <% @markdown = @markdown1 %>
-              <%= render 'shared/articletyping' %>
-          <% else %>
-            <% article_display("stage", "horizontal") %>
-            <%= @markdown.html_safe %>
-          <% end %>
+            <%= render 'shared/article_display_quill', article_name: "stage", id: 0, display_only: false, additional_class: "" %>
           </div>
         </div>
         </div>
@@ -69,8 +62,7 @@
         <% end %>
         <div class="wrapper">
           <div class="texte-stage">
-            <% article_display("stage", "horizontal") %>
-            <%= @markdown.html_safe %>
+            <%= render 'shared/article_display_quill', article_name: "stage", id: 0, display_only: true, additional_class: "" %>
           </div>
         </div>
         </div>
