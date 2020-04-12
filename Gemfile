@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-ruby '2.5.0'
+ruby '2.6.0'
 
 gem 'bootsnap'
 gem 'devise'
@@ -48,7 +48,7 @@ gem 'elevatezoom-rails'
 gem 'letter_opener', group: :development
 
 # admin
-gem 'activeadmin', '~> 1.3.1'
+gem 'activeadmin', '~> 1.3.0'
 gem 'activeadmin-index_as_calendar', github: 'bys-control/activeadmin-index_as_calendar'
 gem 'inherited_resources', github: 'activeadmin/inherited_resources'
 

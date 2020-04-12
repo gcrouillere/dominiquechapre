@@ -24,7 +24,8 @@ fr:
   consented: "J'accepte les %{link} "
   shipping_info_hint: "Cette information sera utilisée pour l'expédition de vos commandes"
   min_char: "caractères minimum"
-  term_of_service: "conditions d\'utilisation"
+  term_of_service: >-
+    "conditions d'utilisation"
   facebook_connect: "Créer un compte avec"
   facebook_connect_mobile: "Connexion avec"
   alternate_connection: "Ou connexion avec votre email :"
