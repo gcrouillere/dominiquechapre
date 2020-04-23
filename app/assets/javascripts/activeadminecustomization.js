@@ -164,13 +164,14 @@ clickOnEditableCell = (event) => {
         //DOM UPDATE
         relatedCell.innerHTML = newValue.length > 200 ? `${newValue.substr(0, 200)} ...` : newValue;
         relatedRow.setAttribute('draggable', 'true')
+        locale = window.location.search.split("&").find(x => x.includes("locale")).split("=")[1]
 
         // UPDATE DB
         $.ajax({
           type: "PATCH",
-          url: `${urlRoot}/chapeaux/${productID}`,
+          url: `${urlRoot}/creations_textiles/${productID}`,
           dataType: "JSON",
-          data: {ceramique: {[updatingField]: newValue}}
+          data: { ceramique: {[updatingField]: newValue}, locale: locale }
         }).done((data) => {
           console.log("done");
           relatedCell.classList.add("sucess-update");

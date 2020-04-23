@@ -11,7 +11,7 @@
       "position": @ceramiques.index(ceramique) + 1,
       "image": cl_image_path(ceramique.photos[0].path),
       "name": ceramique.name,
-      "url": "https://#{ENV['APPNAME']}.herokuapp.com/#{ENV['MODEL']}/#{ceramique.to_param}",
+      "url": "https://www.dominiquechapre.com/#{ENV['MODEL']}/#{ceramique.to_param}",
     }}.to_json %>
   }
   </script>

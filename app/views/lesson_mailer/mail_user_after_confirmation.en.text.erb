@@ -2,7 +2,7 @@ Hello <%= @lesson.user.first_name %> <%= @lesson.user.last_name %>,
 
 Your lesson request has been accepted. First day <%= l @lesson.start, format: :short %>, for <%= "#{@lesson.duration}" %> days.
 
-You have to pay a deposit so that it is definitely validated : https://<%=ENV['APPNAME']%>.herokuapp.com/lessons/<%= @lesson.id %>
+You have to pay a deposit so that it is definitely validated : https://www.dominiquechapre.com/lessons/<%= @lesson.id %>
 
 Regards
 

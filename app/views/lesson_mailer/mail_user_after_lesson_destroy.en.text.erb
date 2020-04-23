@@ -7,7 +7,7 @@ Hello <%= @lesson.user.first_name %> <%= @lesson.user.last_name %>,
 <% else %>
 <%= "Sorry, we cannot accept your lesson request due to a capacity issue."%>
 
-<%= "You could start your lesson at this date : #{@closest_start}. Please make a new request on-line : https://#{ENV['APPNAME']}.herokuapp.com/lessons/new"%>
+<%= "You could start your lesson at this date : #{@closest_start}. Please make a new request on-line : https://www.dominiquechapre.com/lessons/new"%>
 
 <% end %>
 

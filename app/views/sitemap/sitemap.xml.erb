@@ -5,33 +5,33 @@
   xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://<%=ENV['APPNAME']%>.herokuapp.com</loc>
+    <loc>https://www.dominiquechapre.com</loc>
     <image:image>
-      <image:loc>https://<%=ENV['APPNAME']%>.herokuapp.com<%= image_path ENV['HOMEPIC']%></image:loc>
+      <image:loc>https://www.dominiquechapre.com<%= image_path ENV['HOMEPIC']%></image:loc>
     </image:image>
     <lastmod>2018-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://<%=ENV['APPNAME']%>.herokuapp.com/chapeaux</loc>
+    <loc>https://www.dominiquechapre.com/creations_textiles</loc>
     <lastmod>2018-11-28</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://<%=ENV['APPNAME']%>.herokuapp.com/info</loc>
+    <loc>https://www.dominiquechapre.com/info</loc>
     <image:image>
-      <image:loc>https://<%=ENV['APPNAME']%>.herokuapp.com<%= image_path ENV['AVATAR']%></image:loc>
+      <image:loc>https://www.dominiquechapre.com<%= image_path ENV['AVATAR']%></image:loc>
     </image:image>
     <lastmod>2018-11-28</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://<%=ENV['APPNAME']%>.herokuapp.com/lessons/new</loc>
+    <loc>https://www.dominiquechapre.com/lessons/new</loc>
     <image:image>
-      <image:loc>https://<%=ENV['APPNAME']%>.herokuapp.com<%= image_path ENV['STAGEPIC']%></image:loc>
+      <image:loc>https://www.dominiquechapre.com<%= image_path ENV['STAGEPIC']%></image:loc>
     </image:image>
     <lastmod>2018-11-28</lastmod>
     <changefreq>monthly</changefreq>
@@ -39,7 +39,7 @@
   </url>
   <% @ceramiques.each do |ceramique| %>
     <url>
-      <loc>https://<%=ENV['APPNAME']%>.herokuapp.com/<%=ENV['MODEL']%>/<%= "#{ceramique.id}-#{ceramique.name.parameterize}-#{ceramique.category.name.parameterize}" %></loc>
+      <loc>https://www.dominiquechapre.com/<%=ENV['MODEL']%>/<%= "#{ceramique.id}-#{ceramique.name.parameterize}-#{ceramique.category.name.parameterize}" %></loc>
       <lastmod><%= ceramique.updated_at.strftime("%Y-%m-%d") %></lastmod>
       <changefreq>monthly</changefreq>
       <priority>0.7</priority>

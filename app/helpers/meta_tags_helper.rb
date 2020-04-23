@@ -1,14 +1,14 @@
 module MetaTagsHelper
   def meta_title
-    content_for?(:title_tag) ? content_for(:title_tag) : "Les chapeaux uniques créés par Dominique Chapre"
+    content_for?(:title_tag) ? content_for(:title_tag) : "Les créations textiles uniques par Dominique Chapre"
   end
 
   def meta_product_name
-    content_for?(:meta_product_name) ? content_for(:meta_product_name) : "Les chapeaux uniques créés par Dominique Chapre - vente de produits de l'artisanat"
+    content_for?(:meta_product_name) ? content_for(:meta_product_name) : "Les créations textiles uniques par Dominique Chapre - vente de produits de l'artisanat"
   end
 
   def meta_description
-    description = "Des produits extraordinaires. Décor somptueux. Venez découvrir leur fabrication lors d'un stage."
+    description = "Découvrez toutes les créations textiles : chapeaux, foulards, chemises en teintures naturelles, en vente dans la boutique. Vous pouvez également réserver un stage pour vous initier où vous perfectionner dans cet artisanat d'art unique."
     content_for?(:description) ? content_for(:description) : description
   end
 
