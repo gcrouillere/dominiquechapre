@@ -40,8 +40,7 @@
       <div class="card-title">
         <h2 class="laptop-h2 hidden-xs hidden-sm"> <%= ceramique.name%> </h2>
         <h2 class="card-mobile-h2 hidden-md hidden-lg"> <%= ceramique.name%> </h2>
-        <% ratio = ceramique.photos[0].width&.to_f || 1 / ceramique.photos[0].height || 1 %>
-        <% ratio < 1 ? ratio = "small" : ratio = "small" %>
+        <% ratio = "small" %>
       </div>
     </div>
   <% end %>
