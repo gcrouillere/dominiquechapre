@@ -22,7 +22,9 @@
               <% verticale = false %>
               <% classe = "" %>
               <% @ceramique.photos.each do |photo| %>
-                <% photo.height || 0 > photo.width || 1 ? verticale = true : nil %>
+                <% if photo.height && photo.width %>
+                  <% photo.height > photo.width ? verticale = true : nil %>
+                <% end %>
               <% end %>
               <% verticale ? classe = "verticale" : classe = "horizontale"  %>
               <div class="front-image-div">
