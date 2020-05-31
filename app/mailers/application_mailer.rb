@@ -1,4 +1,4 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'contact@'+ENV['APPNAME']+'.com'
+  default from: 'dominiquechapre@orange.fr'
   layout 'mailer'
 end
