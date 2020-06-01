@@ -17,7 +17,7 @@ class PaymentsController < ApplicationController
       payment_method_types: ['card'],
       line_items: [{
         name: 'Dominique Chapre',
-        description: "Paiement pour #{@order.ceramique || "lesson"}",
+        description: "Paiement pour #{@order.ceramique || " stage : " + @order.lesson&.calendarupdate&.name}",
         amount: @final_amount,
         currency: 'eur',
         quantity: 1,
@@ -37,13 +37,12 @@ class PaymentsController < ApplicationController
     payment_intent = Stripe::PaymentIntent.retrieve(session["payment_intent"])
     status = payment_intent["status"]
 
-    # Check other statuses fro stripe : WIP ?
     if status == "succeeded"
       document_order_basketlines
       @order.update(stripe_payment_intent: payment_intent, state: 'paid', method: 'stripe')
       sends_mails_after_order
     else
-      @order.update(stripe_payment_intent: payment_intent, state: 'unkown', method: 'stripe')
+      @order.update(stripe_payment_intent: payment_intent, state: status, method: 'stripe')
       flash[:notice] = t(:payment_failure)
       redirect_to new_order_payment_url(@order)
     end

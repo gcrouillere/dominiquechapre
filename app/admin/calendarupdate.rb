@@ -1,6 +1,5 @@
 ActiveAdmin.register Calendarupdate do
   permit_params :period_start, :period_end, :available, :price_cents, :capacity, :name
-  actions  :index, :new, :create, :destroy, :show
   menu priority: 4
   config.filters = false
 
@@ -45,13 +44,15 @@ ActiveAdmin.register Calendarupdate do
 
   show do |calendarupdate|
     attributes_table do
-      row :period_start
-      row :period_end
+      row(:period_start) { |object| object.period_start.strftime( "%d-%m-%Y") }
+      row(:period_end) { |object| object.period_end.strftime( "%d-%m-%Y") }
       row :available
       row :price_cents
       row :capacity
     end
   end
+
+
 
   controller do
 

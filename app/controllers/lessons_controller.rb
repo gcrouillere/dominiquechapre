@@ -51,7 +51,9 @@ class LessonsController < ApplicationController
   def available_dates_to_input
     calendarupdates = Calendarupdate.where(available: true).order(period_start: :asc)
     calendarupdates = calendarupdates.map do |calendarupdate|
-      [calendarupdate.name, calendarupdate.id]
+      duration = (calendarupdate.period_end - calendarupdate.period_start).round / (24 * 3600) + 1
+      display_name = "#{calendarupdate.name}. Début : #{calendarupdate.period_start.strftime("%d-%m-%Y")}. Durée : #{duration} jour(s)"
+      [display_name , calendarupdate.id]
     end
     return calendarupdates
   end

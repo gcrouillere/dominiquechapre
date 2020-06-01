@@ -3,7 +3,9 @@ ActiveAdmin.register Lesson do
   actions  :index, :destroy, :update, :edit, :show
   config.sort_order = 'start_asc'
   menu priority: 5
-  config.filters = false
+  config.filters = true
+  remove_filter :order, :created_at, :updated_at
+  config.sort_order = 'calendarupdate.period_start.asc'
 
   index do
     render 'current_week_lessons'
@@ -59,24 +61,29 @@ ActiveAdmin.register Lesson do
     end
   end
 
+  form do |f|
+    unless object.confirmed
+      f.inputs "" do
+        f.input :confirmed
+      end
+      f.actions
+    else
+      render 'update_not_possible'
+    end
+  end
+
   controller do
 
     def index
       super do |format|
         @current_week_lessons_a = Lesson.where("confirmed = ? AND start >= ?", true, Time.now - 20 * 3600 * 24).joins(:order).order(start: :asc).where("lesson_id IS NOT NULL")
-        @pending_lessons = Lesson.where("confirmed = ? AND start >= ?", false, Time.now)
-        Lesson.all.each do |lesson|
-          if !lesson.confirmed? && lesson.start < Time.now
-            lesson.destroy
-          end
-        end
+        @pending_lessons = Lesson.where("confirmed = ?", false)
       end
     end
 
     def update
       lesson = Lesson.find(params[:id].to_i)
       calendarupdate = lesson.calendarupdate
-
       if params[:lesson][:confirmed] == "1" # Si la réservation va être confirmée
         if calendarupdate.capacity >= lesson.student
           calendarupdate.update(capacity: calendarupdate.capacity - lesson.student)
