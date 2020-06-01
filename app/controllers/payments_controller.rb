@@ -1,7 +1,6 @@
 class PaymentsController < ApplicationController
   before_action :set_order, only: [:create, :new, :create_stripe_payment]
   before_action :logistic_check, only: [:new]
-  skip_before_action :authenticate_user!, only: [:create_stripe_payment]
 
   def new
     if @order.state == "lost"
