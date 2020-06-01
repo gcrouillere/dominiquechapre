@@ -1,6 +1,7 @@
 class PaymentsController < ApplicationController
   before_action :set_order, only: [:create, :new, :create_stripe_payment]
   before_action :logistic_check, only: [:new]
+  skip_before_action :authenticate_user!, only: [:create_stripe_payment]
 
   def new
     if @order.state == "lost"
@@ -33,15 +34,23 @@ class PaymentsController < ApplicationController
   end
 
   def create_stripe_payment
+    puts "in sucess URL"
     session = Stripe::Checkout::Session.retrieve(@order.stripe_session)
+    puts "session"
+    puts session
     payment_intent = Stripe::PaymentIntent.retrieve(session["payment_intent"])
+    puts "payment_intent"
+    puts payment_intent
     status = payment_intent["status"]
+    puts status
 
     if status == "succeeded"
+      puts "payment succeeded"
       document_order_basketlines
       @order.update(stripe_payment_intent: payment_intent, state: 'paid', method: 'stripe')
       sends_mails_after_order
     else
+      puts "payment failed"
       @order.update(stripe_payment_intent: payment_intent, state: status, method: 'stripe')
       flash[:notice] = t(:payment_failure)
       redirect_to new_order_payment_url(@order)
@@ -72,6 +81,7 @@ class PaymentsController < ApplicationController
       # SEND EMAILS
       @user = current_user
       @amount = @order.amount
+      puts "deliver emails"
       OrderMailer.confirmation_mail_after_order(@user, @order).deliver_now
       OrderMailer.mail_francoise_after_order(@user, @order).deliver_now
       # CLEAR SESSION AND REDIRECT TO CONFIRMATION
@@ -107,11 +117,12 @@ class PaymentsController < ApplicationController
   end
 
   def document_order_basketlines
+    puts "document_order_basketlines"
     @order.basketlines.each do |basketline|
       @order.promo.present? ? order_discount = @order.promo.percentage : order_discount = 0
       if basketline.ceramique
         basketline.ceramique.offer ? ceramique_discount = basketline.ceramique.offer.discount : ceramique_discount = 0
-
+        puts "update basketline"
         basketline.update(
           ceramique_name: basketline.ceramique.name,
           ceramique_qty: basketline.quantity,
